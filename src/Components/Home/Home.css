@@ -16,9 +16,13 @@
 
 
 .product-description-section {
-    background-color: var(--primary-button);
     border-radius: 15px;
     box-shadow: 0px 2px 5px var(--accent);
+    background-color: #fdd492;
+    opacity: 1;
+    background-image:  linear-gradient(30deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(150deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(30deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(150deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(60deg, #f2af2977 25%, transparent 25.5%, transparent 75%, #f2af2977 75%, #f2af2977), linear-gradient(60deg, #f2af2977 25%, transparent 25.5%, transparent 75%, #f2af2977 75%, #f2af2977);
+    background-size: 56px 98px;
+    background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
 }
 
 .product-description {

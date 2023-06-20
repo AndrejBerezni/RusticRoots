@@ -7,7 +7,7 @@ import './Home.css'
 import { heroText, honeyText, ciderText } from '../../Data/Hometext'
 import logo from "../../Assets/logo-nobg.png"
 import cider from "../../Assets/roxburyrussetcider.png"
-import honey from "../../Assets/tilia.png"
+import honey from "../../Assets/tilia.png";
 
 function ProductDescription({ img, title, btnText, text }) {
     return (
