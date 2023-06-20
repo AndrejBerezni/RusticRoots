@@ -1,1 +1,17 @@
-@import '../../App.css'
+@import '../../App.css';
+
+.navigation {
+    font-family: var(--header-font);
+    margin-left: 20px;
+    margin-right: 25px;
+    max-width: 100vw;
+}
+
+.nav-link {
+    letter-spacing: 1px;
+}
+.nav-link.active {
+    text-decoration: underline;
+    text-decoration-color: var(--secondary-accent);
+    
+}
