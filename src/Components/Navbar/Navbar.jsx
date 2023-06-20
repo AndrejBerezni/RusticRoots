@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from "react-router-dom";
+import cart from '../../Assets/shopping-cart.png'
 
 export default function Navigation() {
     return (
@@ -16,8 +17,10 @@ export default function Navigation() {
                         <Nav.Link to={'/'} as={NavLink} className='nav-link'>Home</Nav.Link>
                         <Nav.Link to={'/shop'} as={NavLink} className='nav-link'>Shop</Nav.Link>
                         <Nav.Link to={'/account'} as={NavLink} className='nav-link'>Account</Nav.Link>
+                        <Nav.Link><img src={cart} alt='cart'/><div id='items-number'>1</div></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                
             </Container>
         </Navbar>
     )

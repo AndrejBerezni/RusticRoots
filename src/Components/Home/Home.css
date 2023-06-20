@@ -69,6 +69,9 @@
     background-color: var(--accent);
 }
 
+.hero-text:hover, .product-text:hover, .product-title:hover {
+    cursor:default;
+}
 @media (min-width: 1200px) {
     .hero-text {
         font-size: 1.3rem;
