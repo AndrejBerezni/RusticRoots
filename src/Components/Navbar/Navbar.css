@@ -2,9 +2,8 @@
 
 .navigation {
     font-family: var(--header-font);
-    margin-left: 20px;
-    margin-right: 25px;
     max-width: 100vw;
+    background-color: var(--background);
 }
 
 .nav-link {
@@ -14,4 +13,15 @@
     text-decoration: underline;
     text-decoration-color: var(--secondary-accent);
     
+}
+
+#navbar-toggle {
+    background-color: transparent;
+    border: 1px solid var(--accent); 
+}
+
+@media (max-width: 380px) {
+    .nav-brand {
+        font-size: 0.8rem;
+    }
 }
