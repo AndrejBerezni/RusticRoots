@@ -7,12 +7,12 @@ import { NavLink } from "react-router-dom";
 
 export default function Navigation() {
     return (
-        <Navbar expand='md' sticky="top">
+        <Navbar expand='md' sticky="top" className="navbar">
             <Container className="navigation justify-content-between">
                 <Navbar.Brand href='/' className="nav-brand">Rustic Roots Honey & Cider</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" id='navbar-toggle'/>
                 <Navbar.Collapse id='basic-navbar-nab'>
-                    <Nav className='gap-5 ms-auto'>
+                    <Nav className='nav-links gap-5 ms-auto'>
                         <Nav.Link to={'/'} as={NavLink} className='nav-link'>Home</Nav.Link>
                         <Nav.Link to={'/shop'} as={NavLink} className='nav-link'>Shop</Nav.Link>
                         <Nav.Link to={'/account'} as={NavLink} className='nav-link'>Account</Nav.Link>
