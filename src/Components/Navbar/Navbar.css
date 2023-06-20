@@ -3,10 +3,10 @@
 .navbar {
     padding: 10px 20px;
     background-color: var(--background);
+    width: 100vw;
 }
 .navigation {
     font-family: var(--header-font);
-    max-width: 100vw;
     background-color: var(--background);
 }
 

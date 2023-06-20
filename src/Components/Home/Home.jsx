@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
+import { Col, Row, Container } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import './Home.css'
 import { heroText, honeyText, ciderText } from '../../Data/Hometext'
@@ -8,27 +9,31 @@ import logo from "../../Assets/logo-nobg.png"
 import cider from "../../Assets/roxburyrussetcider.png"
 import honey from "../../Assets/tilia.png"
 
+function ProductDescription({ img, title, btnText, text }) {
+    return (
+        <Col xs={10} md={5} className="product-description my-3 gap-3">
+            <Image src={img} roundedCircle className="product-img" />
+            <h2 className="product-title">{title}</h2>
+            <p className="product-text">{text}</p>
+            <Button as={NavLink} to={'/shop'} className="product-btn">{btnText}</Button>
+        </Col>
+    )
+}
 export default function Home() {
     return (
-        <div className="home">
-            <div className="hero">
-                <p className="hero-text">{heroText}</p>
-                <Image src={logo} className="logo" />
-            </div>
-            <div className="product-description-section">
-                <div className="product-description">
-                    <Image src={cider} roundedCircle className="product-img"/>
-                    <h2 className="product-title">Apple Cider</h2>
-                    <p className="product-text">{ciderText}</p>
-                    <Button as={NavLink} to={'/shop'} className="product-btn">Shop Cider</Button>
-                </div>
-                <div className="product-description">
-                <Image src={honey} roundedCircle className="product-img"/>
-                <h2 className="product-title">Honey</h2>
-                <p className="product-text">{honeyText}</p>
-                <Button as={NavLink} to={'/shop'} className="product-btn">Shop Honey</Button>
-                </div>
-            </div>
-        </div>
+        <Container className="home">
+            <Row className="d-flex justify-content-center align-items-center mt-3 mb-5">
+                <Col xs md={5}>
+                    <p className="hero-text">{heroText}</p>
+                </Col>
+                <Col xs md={5}>
+                    <Image src={logo} className="logo" />
+                </Col>
+            </Row>
+            <Row className="product-description-section d-flex justify-content-around align-items-strech my-3">
+                <ProductDescription img={cider} text={ciderText} title={'Apple Cider'} btnText={'Shop Cider'} />
+                <ProductDescription img={honey} text={honeyText} title={'Honey'} btnText={'Shop Honey'} />
+            </Row>
+        </Container>
     )
 }
