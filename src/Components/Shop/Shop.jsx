@@ -1,27 +1,28 @@
 import React from "react";
 import './Shop.css';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import ItemCard from "./ItemCard/ItemCard";
-import products from "../../Data/Products";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 export default function Shop() {
-    const honey = products.filter(product => product.type === 'honey');
-    const cider = products.filter(product => product.type === 'cider')
+    const location = useLocation();
+
     return (
-            <Container className='shop py-5'>
-                <h1>Honey</h1>
-                <Row className="gap-3 mb-5">
-                {honey.map(product => (
-                    <ItemCard img={product.src} title={product.name} size={product.size} description={product.description} />
-                ))}
-                </Row>
-                <h1>Apple Cider</h1>
-                <Row className="gap-3 mb-5">
-                {cider.map(product => (
-                    <ItemCard img={product.src} title={product.name} size={product.size} description={product.description} />
-                ))}
-                </Row>
-            </Container>
+        <Container className='shop'>
+            <div>
+            <Link
+                className={location.pathname === '/shop/honey' ? 'active' : ''}
+                to='/shop/honey'
+            >
+                Honey
+            </Link>
+            <Link
+                className={location.pathname === '/shop/cider' ? 'active' : ''}
+                to='/shop/cider'
+            >
+                Apple Cider
+            </Link>
+            </div>
+            <Outlet />
+        </Container>
     )
 }

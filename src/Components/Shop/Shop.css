@@ -1,7 +1,43 @@
-@import '../../App.css';
+@import "../../App.css";
+.shop {
+  margin-top: 40px;
+}
 
-.shop h1 {
-    font-family: var(--header-font);
-    font-weight: bold;
-    font-style: italic;
+.shop > div {
+    margin-bottom: 20px;
+}
+.shop a {
+  font-family: var(--header-font);
+  font-weight: bold;
+  text-decoration: none;
+  /* text-decoration-color: var(--secondary-accent); */
+  font-size: 2rem;
+  color: var(--text);
+}
+
+.shop a:nth-of-type(1) {
+  margin-right: 20px;
+}
+
+.shop a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-accent);
+}
+
+a.active {
+  text-decoration: underline;
+  text-decoration-color: var(--secondary-accent);
+}
+
+@media (max-width: 768px) {
+  .shop,
+  .product-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .shop a {
+    font-size: 1.3rem;
+  }
 }

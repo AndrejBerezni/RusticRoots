@@ -9,13 +9,13 @@ import logo from "../../Assets/logo-nobg.png"
 import cider from "../../Assets/roxburyrussetcider.png"
 import honey from "../../Assets/tilia.png";
 
-function ProductDescription({ img, title, btnText, text }) {
+function ProductDescription({ img, title, btnText, text, target }) {
     return (
         <Col xs={10} md={5} className="product-description my-3 gap-3">
             <Image src={img} roundedCircle className="product-img" />
             <h2 className="product-title">{title}</h2>
             <p className="product-text">{text}</p>
-            <Button as={NavLink} to={'/shop'} className="product-btn">{btnText}</Button>
+            <Button as={NavLink} to={target} className="product-btn">{btnText}</Button>
         </Col>
     )
 }
@@ -31,8 +31,18 @@ export default function Home() {
                 </Col>
             </Row>
             <Row className="product-description-section d-flex justify-content-around align-items-strech my-3">
-                <ProductDescription img={cider} text={ciderText} title={'Apple Cider'} btnText={'Shop Cider'} />
-                <ProductDescription img={honey} text={honeyText} title={'Honey'} btnText={'Shop Honey'} />
+                <ProductDescription 
+                img={cider}
+                 text={ciderText} 
+                 title={'Apple Cider'} 
+                 btnText={'Shop Cider'} 
+                 target={'/shop/cider'}/>
+                <ProductDescription 
+                img={honey} 
+                text={honeyText} 
+                title={'Honey'} 
+                btnText={'Shop Honey'} 
+                target={'/shop/honey'}/>
             </Row>
         </Container>
     )
