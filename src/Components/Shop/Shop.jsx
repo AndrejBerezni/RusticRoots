@@ -10,7 +10,7 @@ export default function Shop() {
         <Container className='shop'>
             <div>
             <Link
-                className={location.pathname === '/shop/honey' ? 'active' : ''}
+                className={location.pathname === '/shop/honey' || location.pathname === '/shop'? 'active' : ''}
                 to='/shop/honey'
             >
                 Honey

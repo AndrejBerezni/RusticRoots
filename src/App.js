@@ -25,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/shop' element={<Shop />} >
+          <Route index element={<ProductSection products={honey} />} />
           <Route path='honey' element={<ProductSection products={honey} />} />
           <Route path='cider' element={<ProductSection products={cider} />} />
         </Route>
