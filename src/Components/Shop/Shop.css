@@ -1,1 +1,7 @@
-@import '../../App.css'
+@import '../../App.css';
+
+.shop h1 {
+    font-family: var(--header-font);
+    font-weight: bold;
+    font-style: italic;
+}
