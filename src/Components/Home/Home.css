@@ -14,6 +14,9 @@
     font-weight: bold;
 }
 
+.logo {
+    max-width: 90vw;
+}
 
 .product-description-section {
     border-radius: 15px;
@@ -40,15 +43,11 @@
     filter: drop-shadow(0px 2px 2px var(--accent));
 }
 
-.logo {
-    max-width: 90vw;
-}
-
-
 .product-title {
     font-family: var(--header-font);
     color: var(--text);
 }
+
 .product-text {
     font-family: var(--text-font);
     font-size: 1.3rem;
