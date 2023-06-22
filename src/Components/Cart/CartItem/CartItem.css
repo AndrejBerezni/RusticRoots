@@ -71,6 +71,5 @@
 .cart-item-total-price {
     font-family: var(--header-font);
     font-size: 1.2rem;
-    font-weight: bold;
     align-self: flex-end;
 }
