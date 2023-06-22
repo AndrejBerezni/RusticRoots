@@ -5,13 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from "react-router-dom";
 import cart from '../../Assets/shopping-cart.png';
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Cart from "../Cart/Cart";
 import { showCart } from "../../ReduxActions/showCartActions";
 
 
 export default function Navigation() {
     const dispatch = useDispatch();
+    let numberOfItemsInCart = 0;
+    useSelector(state => state.cart).forEach(item => numberOfItemsInCart += item.count);
 
     return (
         <Navbar expand='md' sticky="top" className="navbar">
@@ -23,7 +25,7 @@ export default function Navigation() {
                         <Nav.Link to={'/'} as={NavLink} className='nav-link'>Home</Nav.Link>
                         <Nav.Link to={'/shop'} as={NavLink} className='nav-link'>Shop</Nav.Link>
                         <Nav.Link to={'/account'} as={NavLink} className='nav-link'>Account</Nav.Link>
-                        <Nav.Link onClick={()=> {dispatch(showCart())}}><img src={cart} alt='cart' /><div id='items-number'>1</div></Nav.Link>
+                        <Nav.Link onClick={()=> {dispatch(showCart())}}><img src={cart} alt='cart' /><div id='items-number'>{numberOfItemsInCart}</div></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
