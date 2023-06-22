@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import cartImg from '../../../Assets/shopping-cart.png';
 import { useDispatch } from "react-redux";
-import { addItem } from "../../../ReduxActions/addItem";
+import { addItem } from '../../../ReduxActions/manageItemsInCart'
 
 export default function ItemCard({ product }) {
     const dispatch = useDispatch();

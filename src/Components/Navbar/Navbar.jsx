@@ -4,9 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from "react-router-dom";
-import cart from '../../Assets/shopping-cart.png'
+import cart from '../../Assets/shopping-cart.png';
+import { useDispatch } from "react-redux";
+import Cart from "../Cart/Cart";
+import { showCart } from "../../ReduxActions/showCartActions";
+
 
 export default function Navigation() {
+    const dispatch = useDispatch();
+
     return (
         <Navbar expand='md' sticky="top" className="navbar">
             <Container className="navigation justify-content-between">
@@ -17,10 +23,11 @@ export default function Navigation() {
                         <Nav.Link to={'/'} as={NavLink} className='nav-link'>Home</Nav.Link>
                         <Nav.Link to={'/shop'} as={NavLink} className='nav-link'>Shop</Nav.Link>
                         <Nav.Link to={'/account'} as={NavLink} className='nav-link'>Account</Nav.Link>
-                        <Nav.Link to={'/cart'} as={NavLink}><img src={cart} alt='cart' /><div id='items-number'>1</div></Nav.Link>
+                        <Nav.Link onClick={()=> {dispatch(showCart())}}><img src={cart} alt='cart' /><div id='items-number'>1</div></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+            <Cart/>
         </Navbar>
     )
 }
