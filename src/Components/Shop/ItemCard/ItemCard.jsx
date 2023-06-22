@@ -1,19 +1,37 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './ItemCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import cartImg from '../../../Assets/shopping-cart.png'
+import cartImg from '../../../Assets/shopping-cart.png';
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../ReduxActions/addItem";
 
 export default function ItemCard({ product }) {
-    const [count, setCount] = useState(1);
+    const dispatch = useDispatch();
 
+    // Handle item count on card:
+    const [count, setCount] = useState(1);
     const decrementCount = () => count > 1 ? setCount(count - 1) : setCount(count);
     const incrementCount = () => setCount(count + 1);
+
+    // Handle adding items to cart
+    const addItemToCart = () => {
+        const item = {
+            name: `${product.name} (${product.size})`,
+            price: product.price,
+            count: count,
+            get totalPrice() {
+                return this.count * this.price
+            }
+        }
+        dispatch(addItem(item));
+        setCount(1)
+    }
     return (
         <Card className='product-card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={product.src} className='card-img'/>
+            <Card.Img variant="top" src={product.src} className='card-img' />
             <Card.Body>
-                <Card.Title className='product-card-title'>{product.title}</Card.Title>
+                <Card.Title className='product-card-title'>{product.name}</Card.Title>
                 <Card.Text className='product-card-description'>{product.description}</Card.Text>
                 <Card.Text className='product-card-size'>{product.size}</Card.Text>
                 <Card.Text className='product-card-price'>Price: ${product.price}</Card.Text>
@@ -22,7 +40,9 @@ export default function ItemCard({ product }) {
                     <div className="item-number">{count}</div>
                     <Button className='card-btn-increment' onClick={incrementCount}>+</Button>
                 </div>
-                <Button className="add-btn"><img alt='cart' className='btn-img' src={cartImg}/>Add to cart</Button>
+                <Button className="add-btn" onClick={addItemToCart}>
+                    <img alt='cart' className='btn-img' src={cartImg} />Add to cart
+                </Button>
             </Card.Body>
         </Card>
     )
