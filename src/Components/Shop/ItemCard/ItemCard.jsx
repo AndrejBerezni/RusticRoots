@@ -21,7 +21,7 @@ export default function ItemCard({ product }) {
             price: product.price,
             count: count,
             get totalPrice() {
-                return this.count * this.price
+                return Math.round(this.count * this.price * 100)/100
             }
         }
         dispatch(addItem(item));

@@ -1,13 +1,18 @@
 import React from "react";
+import './Cart.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from "react-redux";
 import { hideCart } from "../../ReduxActions/showCartActions";
+import CartItem from "./CartItem/CartItem";
 
 export default function Cart() {
     const dispatch = useDispatch();
     const show = useSelector(state => state.showCart);
+    const cartItems = useSelector(state => state.cart)
     const handleClose = () => { dispatch(hideCart()) };
+    let totalPrice = 0;
+    useSelector(state=> state.cart).forEach(item => totalPrice += item.totalPrice);
 
     return (
         <Modal
@@ -15,19 +20,20 @@ export default function Cart() {
             onHide={handleClose}
             backdrop="static"
             keyboard={false}
+            centered
         >
             <Modal.Header closeButton>
-                <Modal.Title>Modal title</Modal.Title>
+                <Modal.Title className='cart-title'>Your Order</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                I will not close if you click outside me. Don not even try to press
-                escape key.
+                {cartItems.map((item, index) => (<CartItem key={index} item={item} />))}
+                <h2 className="cart-total-price">Total: ${Math.round(totalPrice*100)/100}</h2>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
+                <Button className='continue-shopping-btn' onClick={handleClose}>
+                    Continue Shopping
                 </Button>
-                <Button variant="primary">Understood</Button>
+                <Button className='checkout-btn'>Go to Checkout</Button>
             </Modal.Footer>
         </Modal>
     );
