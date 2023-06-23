@@ -16,17 +16,17 @@
     font-weight: bold;
     transition: .3s;
     box-shadow: 1px 1px 2px var(--accent);
+    border: none;
 }
 
 .continue-shopping-btn {
     background-color: var(--secondary-button);
     color: var(--text);
-    border: none;
+    
 }
 
 .checkout-btn {
     background-color: var(--secondary-accent);
-    border: none
 }
 
 .continue-shopping-btn:hover, .checkout-btn:hover {

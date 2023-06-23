@@ -1,0 +1,31 @@
+@import '../../../App.css';
+
+.sign-in-text, .sign-in-title, .sign-in-label, .sign-in-btn, .sign-in-input {
+    font-family: var(--header-font);
+}
+
+.sign-in-text, .sign-in-title {
+    color: var(--text)
+}
+
+.sign-in-btn {
+    font-family: var(--header-font);
+    font-weight: bold;
+    transition: .3s;
+    box-shadow: 1px 1px 2px var(--accent);
+    background-color: var(--secondary-accent);
+    border: none
+}
+
+.sign-in-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--accent);
+}
+
+.sign-up-btn {
+    color: var(--secondary-accent)
+}
+
+.sign-up-btn:hover {
+    color: var(--accent)
+}
