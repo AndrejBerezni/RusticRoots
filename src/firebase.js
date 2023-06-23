@@ -17,3 +17,21 @@ const db = getFirestore(app)
 const auth = getAuth();
 
 export {auth, db, app}
+
+// async function firebaseSignUp(email, password) {
+//   await createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed in 
+//     const user = userCredential.user;
+//     console.log(user)
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     console.log(errorCode, errorMessage)
+//     // ..
+//   });
+// }
+
+// export {firebaseSignUp}
