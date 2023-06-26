@@ -29,7 +29,7 @@ export default function ItemCard({ product }) {
     }
     return (
         <Card className='product-card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={product.src} className='card-img' />
+            <Card.Img variant="top" src={product.image} className='card-img' />
             <Card.Body>
                 <Card.Title className='product-card-title'>{product.name}</Card.Title>
                 <Card.Text className='product-card-description'>{product.description}</Card.Text>

@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import './SignIn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -12,19 +13,21 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 
 export default function SignIn() {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const show = useSelector(state => state.showSignIn);
     const handleClose = () => dispatch(hideSignIn());
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
     const firebaseSignUp = () => {
-        // e.preventDefault();
         createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                dispatch(signIn())
+                dispatch(signIn());
+                dispatch(hideSignIn());
+                navigate('/account');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -33,13 +36,14 @@ export default function SignIn() {
             });
     }
     const firebaseSignIn = () => {
-        // e.preventDefault();
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
-                dispatch(signIn())
+                dispatch(signIn());
+                dispatch(hideSignIn());
+                navigate('/account');
             })
             .catch((error) => {
                 const errorCode = error.code;

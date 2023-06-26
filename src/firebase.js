@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from "firebase/firestore";
+import {getFirestore, getDocs, collection, query, where} from "firebase/firestore";
 import {getAuth} from "firebase/auth"
 const firebaseConfig = {
   apiKey: "AIzaSyAKNEPNYjgwxEBy55xqUQnmjuOGNYx2KNQ",
@@ -16,7 +16,34 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 const auth = getAuth();
 
-export {auth, db, app}
+async function getProducts(category) {
+  const productsArr = [];
+  const q = query(collection(db, 'products'), where('metadata.Category', '==', category));
+  const querySnapshot = await getDocs(q);
+
+  await Promise.all(
+    querySnapshot.docs.map(async (doc) => {
+      const priceQuery = collection(db, 'products', doc.id, 'prices');
+      const priceSnapshot = await getDocs(priceQuery);
+
+      const prices = priceSnapshot.docs.map((priceDoc) => priceDoc.data());
+      const productData = doc.data();
+
+      const productObj = {
+        name: productData.name,
+        size: productData.metadata.Size,
+        price: prices.length > 0 ? prices[0].unit_amount / 100 : null, // Divide by 100 to convert to currency's decimal places
+        description: productData.description,
+        image: productData.images ? productData.images[0] : null,
+      };
+
+      productsArr.push(productObj);
+    })
+  );
+    console.log(productsArr)
+  return productsArr;
+}
+
 
 // async function firebaseSignUp(email, password) {
 //   await createUserWithEmailAndPassword(auth, email, password)
@@ -35,3 +62,7 @@ export {auth, db, app}
 // }
 
 // export {firebaseSignUp}
+
+
+
+export {auth, app, getProducts}
