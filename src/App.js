@@ -8,11 +8,17 @@ import Account from "./Components/Account/Account";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ProductSection from "./Components/Shop/ProductSection/ProductSection";
 import { getProducts } from "./firebase";
+import Spinner from 'react-bootstrap/Spinner';
+import { useSelector, useDispatch } from "react-redux";
+import {showSpinner, hideSpinner} from "./ReduxActions/showSpinnerActions"
+
 
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const [honeyProducts, setHoneyProducts] = useState([]);
-  const [ciderProducts, setCiderProducts] = useState([])
+  const [ciderProducts, setCiderProducts] = useState([]);
+  const spinner = useSelector(state => state.showSpinner)
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,13 +26,15 @@ function App() {
 
 useEffect(()=> {
   const fetchProducts = async () => {
+    dispatch(showSpinner())
     const honey = await getProducts('Honey');
     const cider = await getProducts('Cider');
     setHoneyProducts(honey)
     setCiderProducts(cider);
+    dispatch(hideSpinner())
   }
   fetchProducts()
-}, [])
+}, [dispatch])
 
   return (
     <div className="App">
@@ -41,6 +49,11 @@ useEffect(()=> {
         <Route path="/account" element={<Account />} />
         <Route path="*" element={<Home />} />
       </Routes>
+      {spinner && (
+        <Spinner variant='warning' animation="border" role="status" className='spinner'>
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      )}
     </div>
   );
 }

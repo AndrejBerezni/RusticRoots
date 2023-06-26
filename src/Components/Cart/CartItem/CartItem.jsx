@@ -24,7 +24,7 @@ export default function CartItem({ item }) {
                     className="cart-item-increment-btn"
                     onClick={() => dispatch(incrementItemNumber(item))}>+</Button>
             </div>
-            <p className="cart-item-total-price">${item.totalPrice}</p>
+            <p className="cart-item-total-price">€{item.totalPrice}</p>
         </div>
     )
 }

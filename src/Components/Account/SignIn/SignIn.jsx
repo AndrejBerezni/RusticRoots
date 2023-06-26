@@ -32,7 +32,8 @@ export default function SignIn() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                console.log(errorCode, errorMessage);
+                window.alert(errorMessage);
             });
     }
     const firebaseSignIn = () => {
@@ -48,7 +49,8 @@ export default function SignIn() {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage)
+                console.log(errorCode, errorMessage);
+                window.alert(errorMessage);
             });
     }
 

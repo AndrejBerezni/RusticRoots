@@ -34,7 +34,7 @@ export default function ItemCard({ product }) {
                 <Card.Title className='product-card-title'>{product.name}</Card.Title>
                 <Card.Text className='product-card-description'>{product.description}</Card.Text>
                 <Card.Text className='product-card-size'>{product.size}</Card.Text>
-                <Card.Text className='product-card-price'>Price: ${product.price}</Card.Text>
+                <Card.Text className='product-card-price'>Price: €{product.price}</Card.Text>
                 <div className="card-btn-div d-flex justify-content-center">
                     <Button className='card-btn-decrement' onClick={decrementCount}>-</Button>
                     <div className="item-number">{count}</div>

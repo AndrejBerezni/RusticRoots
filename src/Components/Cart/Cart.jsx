@@ -27,7 +27,7 @@ export default function Cart() {
             </Modal.Header>
             <Modal.Body>
                 {cartItems.map((item, index) => (<CartItem key={index} item={item} />))}
-                <h2 className="cart-total-price">Total: ${Math.round(totalPrice*100)/100}</h2>
+                <h2 className="cart-total-price">Total: €{Math.round(totalPrice*100)/100}</h2>
             </Modal.Body>
             <Modal.Footer>
                 <Button className='continue-shopping-btn' onClick={handleClose}>

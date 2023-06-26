@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 const auth = getAuth();
 
+// Get products
 async function getProducts(category) {
   const productsArr = [];
   const q = query(collection(db, 'products'), where('metadata.Category', '==', category));
@@ -40,29 +41,7 @@ async function getProducts(category) {
       productsArr.push(productObj);
     })
   );
-    console.log(productsArr)
   return productsArr;
 }
-
-
-// async function firebaseSignUp(email, password) {
-//   await createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     console.log(user)
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     console.log(errorCode, errorMessage)
-//     // ..
-//   });
-// }
-
-// export {firebaseSignUp}
-
-
 
 export {auth, app, getProducts}

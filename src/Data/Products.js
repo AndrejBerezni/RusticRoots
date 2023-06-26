@@ -1,3 +1,6 @@
+// This file is not used anymore, products are created in Stripe and synced to Firestore.
+// I am leaving this just in case I need it in the future as a referrence
+
 const products = [
   {
     name: "Acacia honey with dried fruits",
