@@ -23,9 +23,12 @@ export default function SignIn() {
         createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
+                const user = {
+                    uid: userCredential.user.uid,
+                    email: userCredential.user.email
+                }
                 console.log(user);
-                dispatch(signIn());
+                dispatch(signIn(user));
                 dispatch(hideSignIn());
                 navigate('/account');
             })
@@ -40,9 +43,12 @@ export default function SignIn() {
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
+                const user = {
+                    uid: userCredential.user.uid,
+                    email: userCredential.user.email
+                }
                 console.log(user);
-                dispatch(signIn());
+                dispatch(signIn(user));
                 dispatch(hideSignIn());
                 navigate('/account');
             })

@@ -1,6 +1,7 @@
-const signIn = () => {
+const signIn = (user) => {
   return {
     type: "SIGN IN",
+    payload: user
   };
 };
 

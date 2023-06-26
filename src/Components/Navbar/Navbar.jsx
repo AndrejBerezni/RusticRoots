@@ -14,7 +14,7 @@ import { showSignIn } from "../../ReduxActions/showSignInActions";
 
 export default function Navigation() {
     const dispatch = useDispatch();
-    const isSignedIn = useSelector(state => state.signedIn);
+    const isSignedIn = useSelector(state => state.signedIn.isSignedIn);
     let numberOfItemsInCart = 0;
     useSelector(state => state.cart).forEach(item => numberOfItemsInCart += item.count);
 

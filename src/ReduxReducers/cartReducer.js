@@ -5,7 +5,7 @@ const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD ITEM":
       // Check if item is already added
-      index = state.findIndex((object) => object.name === action.payload.name);
+      index = state.findIndex((object) => object.id === action.payload.id);
       //   If it is, just increase the count
       if (index > -1) {
         const updatedState = [...state];
@@ -15,7 +15,7 @@ const cartReducer = (state = initialState, action) => {
         return [...state, action.payload];
       }
     case "INCREMENT ITEM NUMBER":
-      index = state.findIndex((object) => object.name === action.payload.name);
+      index = state.findIndex((object) => object.id === action.payload.id);
       if (index > -1) {
         const updatedState = [...state];
         updatedState[index].count++;
@@ -23,7 +23,7 @@ const cartReducer = (state = initialState, action) => {
       }
       return state;
     case "DECREMENT ITEM NUMBER":
-      index = state.findIndex((object) => object.name === action.payload.name);
+      index = state.findIndex((object) => object.id === action.payload.id);
       if (index > -1 && state[index].count > 1) {
         const updatedState = [...state];
         updatedState[index].count--;
@@ -31,11 +31,13 @@ const cartReducer = (state = initialState, action) => {
       }
       return state;
     case "REMOVE ITEM":
-      index = state.findIndex((object) => object.name === action.payload.name);
+      index = state.findIndex((object) => object.id === action.payload.id);
       if (index > -1) {
-        state.splice(index, 1);
+        const updatedState = [...state]
+        updatedState.splice(index, 1);
+        return updatedState;
       }
-      return [...state];
+      return state;
     default:
       return state;
   }

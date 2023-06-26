@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from "react-redux";
 import { hideCart } from "../../ReduxActions/showCartActions";
 import CartItem from "./CartItem/CartItem";
+// import { loadStripe } from "@stripe/stripe-js";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Cart() {
     const cartItems = useSelector(state => state.cart)
     const handleClose = () => { dispatch(hideCart()) };
     let totalPrice = 0;
-    useSelector(state=> state.cart).forEach(item => totalPrice += item.totalPrice);
+    useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
 
     return (
         <Modal
@@ -27,13 +28,13 @@ export default function Cart() {
             </Modal.Header>
             <Modal.Body>
                 {cartItems.map((item, index) => (<CartItem key={index} item={item} />))}
-                <h2 className="cart-total-price">Total: €{Math.round(totalPrice*100)/100}</h2>
+                <h2 className="cart-total-price">Total: €{Math.round(totalPrice * 100) / 100}</h2>
             </Modal.Body>
             <Modal.Footer>
                 <Button className='continue-shopping-btn' onClick={handleClose}>
                     Continue Shopping
                 </Button>
-                <Button className='checkout-btn'>Go to Checkout</Button>
+                <Button className='checkout-btn' >Go to Checkout</Button>
             </Modal.Footer>
         </Modal>
     );

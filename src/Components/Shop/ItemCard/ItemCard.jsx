@@ -17,7 +17,9 @@ export default function ItemCard({ product }) {
     // Handle adding items to cart
     const addItemToCart = () => {
         const item = {
-            name: `${product.name} (${product.size})`,
+            id: `${product.name} (${product.size})`,
+            name: product.name,
+            size: product.size,
             price: product.price,
             count: count,
             get totalPrice() {
