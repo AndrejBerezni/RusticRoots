@@ -4,10 +4,11 @@ import './SignIn.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { hideSignIn } from "../../../ReduxActions/showSignInActions";
-import {showAlert } from "../../../ReduxActions/showAlertActions";
+import { hideSignInAlert, showSignInAlert } from "../../../ReduxActions/showAlertActions";
 import { signIn } from "../../../ReduxActions/signInActions";
 import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -17,6 +18,8 @@ export default function SignIn() {
     const navigate = useNavigate()
     const show = useSelector(state => state.showSignIn);
     const inCart = useSelector(state => state.showCart);
+    const alert = useSelector((state) => state.showSignInAlert.showAlert);
+    const alertMessage = useSelector((state) => state.showSignInAlert.message);
     const handleClose = () => dispatch(hideSignIn());
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -39,9 +42,21 @@ export default function SignIn() {
                 }
             })
             .catch((error) => {
-                const errorMessage = error.message;
-                dispatch(showAlert(errorMessage));
-                dispatch(hideSignIn());
+                // Adding user-friendly text for known errors:
+                let errorMessage;
+                if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                    errorMessage = "Email already in use, please use other one."
+                } else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+                    errorMessage = 'Password should be at least 6 characters long. Try again.'
+                } else if (error.message === 'Firebase: Error (auth/missing-email).') {
+                    errorMessage = 'Please add your email to sign up.'
+                } else if (error.message === 'Firebase: Error (auth/missing-password).') {
+                    errorMessage = 'Please create password to sign up.'
+                } else {
+                    errorMessage = error.message
+                }
+                console.log(error.message)
+                dispatch(showSignInAlert(errorMessage));
             });
     }
 
@@ -61,9 +76,18 @@ export default function SignIn() {
                 }
             })
             .catch((error) => {
-                const errorMessage = error.message;
-                dispatch(showAlert(errorMessage));
-                dispatch(hideSignIn());
+                // Adding user-friendly text for known errors:
+                let errorMessage;
+                if (error.message === 'Firebase: Error (auth/wrong-password).') {
+                    errorMessage = 'Wrong password. Please try again.'
+                } else if (error.message === 'Firebase: Error (auth/user-not-found).') {
+                    errorMessage = 'User not found.'
+                } else if (error.message === 'Firebase: Error (auth/invalid-email).') {
+                    errorMessage = 'Invalid email'
+                } else {
+                    errorMessage = error.message
+                }
+                dispatch(showSignInAlert(errorMessage));
             });
     }
 
@@ -80,6 +104,15 @@ export default function SignIn() {
                 <Modal.Title className="sign-in-title">Please sign in to continue:</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                {alert && (
+                    <Alert
+                        variant="danger"
+                        dismissible
+                        onClose={() => dispatch(hideSignInAlert())}
+                    >
+                        {alertMessage}
+                    </Alert>
+                )}
                 <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="sign-in-label">Email address</Form.Label>
@@ -89,7 +122,11 @@ export default function SignIn() {
                         <Form.Label className="sign-in-label">Password</Form.Label>
                         <Form.Control ref={passwordRef} className="sign-in-input" type="password" placeholder="Password" required />
                     </Form.Group>
-                    <Button className='sign-in-btn' onClick={firebaseSignIn}>
+                    <Button className='sign-in-btn' type='submit' onClick={e => {
+                        e.preventDefault()
+                        firebaseSignIn()
+                    }
+                    }>
                         Sign In
                     </Button>
                 </Form>

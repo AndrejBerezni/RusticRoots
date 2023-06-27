@@ -1,5 +1,11 @@
 @import '../../App.css';
 
+.account-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .account-page-image {
     max-width: 100%;
 }

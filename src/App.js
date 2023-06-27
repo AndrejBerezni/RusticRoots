@@ -9,8 +9,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import ProductSection from "./Components/Shop/ProductSection/ProductSection";
 import { getProducts } from "./firebase";
 import Spinner from "react-bootstrap/Spinner";
-import Alert from "react-bootstrap/Alert";
-import { hideAlert } from "./ReduxActions/showAlertActions";
 import { useSelector, useDispatch } from "react-redux";
 import { showSpinner, hideSpinner } from "./ReduxActions/showSpinnerActions";
 
@@ -20,8 +18,6 @@ function App() {
   const [honeyProducts, setHoneyProducts] = useState([]);
   const [ciderProducts, setCiderProducts] = useState([]);
   const spinner = useSelector((state) => state.showSpinner);
-  const alert = useSelector((state) => state.showAlert.showAlert);
-  const alertMessage = useSelector((state) => state.showAlert.message);
 
   // Scroll to the top of the page when you change page
   useEffect(() => {
@@ -72,16 +68,6 @@ function App() {
         >
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-      )}
-      {alert && (
-        <Alert
-          className="alert"
-          variant="warning"
-          dismissible
-          onClose={() => dispatch(hideAlert())}
-        >
-          {alertMessage}
-        </Alert>
       )}
     </div>
   );

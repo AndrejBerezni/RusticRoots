@@ -10,14 +10,21 @@ import { db } from "../../firebase";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { showSignIn } from '../../ReduxActions/showSignInActions';
 import { showAlert } from "../../ReduxActions/showAlertActions";
+import Alert from "react-bootstrap/Alert";
+import { hideAlert } from "../../ReduxActions/showAlertActions";
 
 export default function Cart() {
     const dispatch = useDispatch();
     const show = useSelector(state => state.showCart);
     const user = useSelector(state => state.signedIn.user);
     const signedIn = useSelector(state => state.signedIn.isSignedIn)
-    const cartItems = useSelector(state => state.cart)
-    const handleClose = () => { dispatch(hideCart()) };
+    const cartItems = useSelector(state => state.cart);
+    const alert = useSelector((state) => state.showAlert.showAlert);
+    const alertMessage = useSelector((state) => state.showAlert.message);
+    const handleClose = () => {
+        dispatch(hideAlert());
+        dispatch(hideCart())
+    };
     let totalPrice = 0;
 
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
@@ -39,8 +46,8 @@ export default function Cart() {
         });
         // If cart is empty, break and inform user
         if (lineItems.length === 0) {
+            console.log('asdasdas')
             dispatch(showAlert('Your cart is empty, please add products to continue to checkout.'));
-            dispatch(hideCart());
             return
         }
         try {
@@ -82,6 +89,16 @@ export default function Cart() {
             <Modal.Body>
                 {cartItems.map((item, index) => (<CartItem key={index} item={item} />))}
                 <h2 className="cart-total-price">Total: €{Math.round(totalPrice * 100) / 100}</h2>
+                {alert && (
+                    <Alert
+                        className="alert"
+                        variant="danger"
+                        dismissible
+                        onClose={() => dispatch(hideAlert())}
+                    >
+                        {alertMessage}
+                    </Alert>
+                )}
             </Modal.Body>
             <Modal.Footer>
                 <Button className='continue-shopping-btn' onClick={handleClose}>

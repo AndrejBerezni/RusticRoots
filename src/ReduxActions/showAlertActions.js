@@ -1,3 +1,16 @@
+const showSignInAlert = (alertText) => {
+    return {
+        type: 'SHOW SIGN IN ALERT',
+        payload: alertText
+    }
+}
+
+const hideSignInAlert = () => {
+    return {
+        type: 'HIDE SIGN IN ALERT'
+    }
+}
+
 const showAlert = (alertText) => {
     return {
         type: 'SHOW ALERT',
@@ -11,4 +24,4 @@ const hideAlert = () => {
     }
 }
 
-export {showAlert, hideAlert}
+export {showAlert, hideAlert, showSignInAlert, hideSignInAlert}
