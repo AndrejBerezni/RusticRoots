@@ -28,6 +28,7 @@ async function getProducts(category) {
       const priceSnapshot = await getDocs(priceQuery);
 
       const prices = priceSnapshot.docs.map((priceDoc) => priceDoc.data());
+      const priceId = priceSnapshot.docs.map((priceDoc) => priceDoc.id)
       const productData = doc.data();
 
       const productObj = {
@@ -36,6 +37,7 @@ async function getProducts(category) {
         price: prices.length > 0 ? prices[0].unit_amount / 100 : null, // Divide by 100 to convert to currency's decimal places
         description: productData.description,
         image: productData.images ? productData.images[0] : null,
+        priceId: priceId[0]
       };
 
       productsArr.push(productObj);

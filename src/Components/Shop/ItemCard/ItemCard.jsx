@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import './ItemCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -21,9 +21,10 @@ export default function ItemCard({ product }) {
             name: product.name,
             size: product.size,
             price: product.price,
+            priceId: product.priceId,
             count: count,
             get totalPrice() {
-                return Math.round(this.count * this.price * 100)/100
+                return Math.round(this.count * this.price * 100) / 100
             }
         }
         dispatch(addItem(item));

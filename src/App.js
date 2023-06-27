@@ -29,7 +29,7 @@ useEffect(()=> {
     dispatch(showSpinner())
     const honey = await getProducts('Honey');
     const cider = await getProducts('Cider');
-    setHoneyProducts(honey)
+    setHoneyProducts(honey);
     setCiderProducts(cider);
     dispatch(hideSpinner())
   }

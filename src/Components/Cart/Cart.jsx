@@ -18,7 +18,7 @@ export default function Cart() {
     let totalPrice = 0;
 
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
-    
+
     const createCheckout = async () => {
         try {
             const docRef = await addDoc(collection(db, 'customers', user.uid, 'checkout_sessions'), {
@@ -41,8 +41,6 @@ export default function Cart() {
             console.error('Error creating checkout:', error);
         }
     };
-
-
 
     return (
         <Modal
