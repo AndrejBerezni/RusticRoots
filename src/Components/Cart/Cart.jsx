@@ -20,10 +20,17 @@ export default function Cart() {
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
 
     const createCheckout = async () => {
+        const lineItems = [];
+        cartItems.forEach(item => {
+            lineItems.push({
+                price: item.priceId,
+                quantity: item.count
+            })
+        })
         try {
             const docRef = await addDoc(collection(db, 'customers', user.uid, 'checkout_sessions'), {
                 mode: 'payment',
-                price: 'price_1NNGHMKUtXesZvVbWUI8FnbJ',
+                line_items: lineItems,
                 success_url: window.location.origin,
                 cancel_url: window.location.origin,
             });
