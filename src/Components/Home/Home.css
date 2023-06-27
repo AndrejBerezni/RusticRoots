@@ -1,82 +1,137 @@
-@import '../../App.css';
+@import "../../App.css";
 .hero-text {
-    text-align: justify;
-    word-spacing: 3px;
-    font-family: var(--text-font);
-    line-height: 2;
+  text-align: justify;
+  word-spacing: 3px;
+  font-family: var(--text-font);
+  line-height: 2;
 }
 
 .hero-text::first-letter {
-    font-family: var(--header-font);
-    line-height: 1;
-    font-size: 2rem;
-    color: var(--secondary-accent);
-    font-weight: bold;
+  font-family: var(--header-font);
+  line-height: 1;
+  font-size: 2rem;
+  color: var(--secondary-accent);
+  font-weight: bold;
 }
 
 .logo {
-    max-width: 90vw;
+  max-width: 90vw;
 }
 
 .product-description-section {
-    border-radius: 15px;
-    box-shadow: 0px 2px 5px var(--accent);
-    background-color: #fdd492;
-    opacity: 1;
-    background-image:  linear-gradient(30deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(150deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(30deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(150deg, #f2af29 12%, transparent 12.5%, transparent 87%, #f2af29 87.5%, #f2af29), linear-gradient(60deg, #f2af2977 25%, transparent 25.5%, transparent 75%, #f2af2977 75%, #f2af2977), linear-gradient(60deg, #f2af2977 25%, transparent 25.5%, transparent 75%, #f2af2977 75%, #f2af2977);
-    background-size: 56px 98px;
-    background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 5px var(--accent);
+  background-color: #fdd492;
+  opacity: 1;
+  background-image: linear-gradient(
+      30deg,
+      #f2af29 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f2af29 87.5%,
+      #f2af29
+    ),
+    linear-gradient(
+      150deg,
+      #f2af29 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f2af29 87.5%,
+      #f2af29
+    ),
+    linear-gradient(
+      30deg,
+      #f2af29 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f2af29 87.5%,
+      #f2af29
+    ),
+    linear-gradient(
+      150deg,
+      #f2af29 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #f2af29 87.5%,
+      #f2af29
+    ),
+    linear-gradient(
+      60deg,
+      #f2af2977 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f2af2977 75%,
+      #f2af2977
+    ),
+    linear-gradient(
+      60deg,
+      #f2af2977 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #f2af2977 75%,
+      #f2af2977
+    );
+  background-size: 56px 98px;
+  background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
 }
 
 .product-description {
-    border-radius: 15px;
-    background-color: var(--background);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-    box-shadow: 0px 2px 5px var(--accent);
+  border-radius: 15px;
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  box-shadow: 0px 2px 5px var(--accent);
 }
 .product-img {
-    max-width: 90%;
-    filter: drop-shadow(0px 2px 2px var(--accent));
+  max-width: 90%;
+  filter: drop-shadow(0px 2px 2px var(--accent));
 }
 
 .product-title {
-    font-family: var(--header-font);
-    color: var(--text);
+  font-family: var(--header-font);
+  color: var(--text);
 }
 
 .product-text {
-    font-family: var(--text-font);
-    font-size: 1.3rem;
-    text-align: justify;
-    color: var(--accent)
+  font-family: var(--text-font);
+  font-size: 1.3rem;
+  text-align: justify;
+  color: var(--accent);
 }
 
 .product-btn {
-    background-color: var(--secondary-accent);
-    color: var(--background);
-    border: none;
-    box-shadow: 0px 1px 2px var(--text);
-    width: 60%;
-    font-family: var(--text-font);
-    letter-spacing: 1.5px;
-    font-weight: bold;
-    text-shadow: 1px 1px 1px var(--text);
-    text-transform: uppercase;
+  background-color: var(--secondary-accent);
+  color: var(--background);
+  border: none;
+  box-shadow: 0px 1px 2px var(--text);
+  width: 60%;
+  font-family: var(--text-font);
+  letter-spacing: 1.5px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px var(--text);
+  text-transform: uppercase;
 }
 
 .product-btn:hover {
-    background-color: var(--accent);
+  background-color: var(--accent);
 }
 
-.hero-text:hover, .product-text:hover, .product-title:hover {
-    cursor:default;
+.hero-text:hover,
+.product-text:hover,
+.product-title:hover {
+  cursor: default;
 }
 @media (min-width: 1200px) {
-    .hero-text {
-        font-size: 1.3rem;
-    }
+  .hero-text {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .row:nth-of-type(1) {
+    flex-direction: column-reverse;
+  }
 }
