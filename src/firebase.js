@@ -44,4 +44,4 @@ async function getProducts(category) {
   return productsArr;
 }
 
-export {auth, app, getProducts}
+export {auth, app, db, getProducts}
