@@ -33,3 +33,18 @@ body {
   top: 40%;
   left: 45%
 }
+
+.alert {
+  position: fixed;
+  width: 60%;
+  min-height: 10%;
+  left: 20%;
+  top: 40%;
+  border: 2px solid var(--accent);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--text-font);
+  font-size: 1.5rem;
+}

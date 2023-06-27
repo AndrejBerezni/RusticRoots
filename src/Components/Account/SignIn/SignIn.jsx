@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { hideSignIn } from "../../../ReduxActions/showSignInActions";
+import {showAlert } from "../../../ReduxActions/showAlertActions";
 import { signIn } from "../../../ReduxActions/signInActions";
 import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -39,7 +40,8 @@ export default function SignIn() {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                window.alert(errorMessage);
+                dispatch(showAlert(errorMessage));
+                dispatch(hideSignIn());
             });
     }
 
@@ -60,7 +62,8 @@ export default function SignIn() {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                window.alert(errorMessage);
+                dispatch(showAlert(errorMessage));
+                dispatch(hideSignIn());
             });
     }
 

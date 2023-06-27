@@ -4,13 +4,15 @@ import showCartReducer from "./showCart";
 import signInReducer from "./signIn";
 import showSignInReducer from "./showSignIn";
 import showSpinnerReducer from "./showSpinner";
+import showAlertReducer from "./showAlert";
 
 const combinedReducers = combineReducers({
   cart: cartReducer,
   showCart: showCartReducer,
   signedIn: signInReducer,
   showSignIn: showSignInReducer,
-  showSpinner: showSpinnerReducer
+  showSpinner: showSpinnerReducer,
+  showAlert: showAlertReducer,
 });
 
 export default combinedReducers;

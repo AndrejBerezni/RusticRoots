@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { db } from "../../firebase";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { showSignIn } from '../../ReduxActions/showSignInActions';
+import { showAlert } from "../../ReduxActions/showAlertActions";
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -38,7 +39,8 @@ export default function Cart() {
         });
         // If cart is empty, break and inform user
         if (lineItems.length === 0) {
-            window.alert('Your cart is empty, please add products to continue to checkout.')
+            dispatch(showAlert('Your cart is empty, please add products to continue to checkout.'));
+            dispatch(hideCart());
             return
         }
         try {
