@@ -27,15 +27,12 @@ export default function SignIn() {
                     uid: userCredential.user.uid,
                     email: userCredential.user.email
                 }
-                console.log(user);
                 dispatch(signIn(user));
                 dispatch(hideSignIn());
                 navigate('/account');
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
                 window.alert(errorMessage);
             });
     }
@@ -47,15 +44,12 @@ export default function SignIn() {
                     uid: userCredential.user.uid,
                     email: userCredential.user.email
                 }
-                console.log(user);
                 dispatch(signIn(user));
                 dispatch(hideSignIn());
                 navigate('/account');
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorCode, errorMessage);
                 window.alert(errorMessage);
             });
     }
@@ -67,6 +61,7 @@ export default function SignIn() {
             backdrop="static"
             keyboard={false}
             className="sign-in-modal"
+            centered
         >
             <Modal.Header closeButton>
                 <Modal.Title className="sign-in-title">Please sign in to continue:</Modal.Title>

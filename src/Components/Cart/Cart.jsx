@@ -8,11 +8,13 @@ import CartItem from "./CartItem/CartItem";
 import { loadStripe } from "@stripe/stripe-js";
 import { db } from "../../firebase";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
+import { showSignIn} from '../../ReduxActions/showSignInActions';
 
 export default function Cart() {
     const dispatch = useDispatch();
     const show = useSelector(state => state.showCart);
-    const user = useSelector(state => state.signedIn.user)
+    const user = useSelector(state => state.signedIn.user);
+    const signedIn = useSelector(state => state.signedIn.isSignedIn)
     const cartItems = useSelector(state => state.cart)
     const handleClose = () => { dispatch(hideCart()) };
     let totalPrice = 0;
@@ -20,13 +22,21 @@ export default function Cart() {
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
 
     const createCheckout = async () => {
+        if(!signedIn) {
+            dispatch(showSignIn());
+            return
+        }
         const lineItems = [];
         cartItems.forEach(item => {
             lineItems.push({
                 price: item.priceId,
                 quantity: item.count
             })
-        })
+        });
+        if (lineItems.length === 0) {
+            window.alert('Your cart is empty, please add products to continue to checkout.')
+            return
+        }
         try {
             const docRef = await addDoc(collection(db, 'customers', user.uid, 'checkout_sessions'), {
                 mode: 'payment',
