@@ -19,13 +19,18 @@ function App() {
   const [ciderProducts, setCiderProducts] = useState([]);
   const spinner = useSelector((state) => state.showSpinner);
 
+  // Scroll to the top of the page when you change page
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Load products:
   useEffect(() => {
     const fetchProducts = async () => {
-      dispatch(showSpinner());
+      // Don't show spinner on home page while loading products in the background
+      if (location.pathname !== "/") {
+        dispatch(showSpinner());
+      }
       const honey = await getProducts("Honey");
       const cider = await getProducts("Cider");
       setHoneyProducts(honey);
@@ -33,7 +38,7 @@ function App() {
       dispatch(hideSpinner());
     };
     fetchProducts();
-  }, [dispatch]);
+  }, [dispatch, location.pathname]);
 
   return (
     <div className="App">

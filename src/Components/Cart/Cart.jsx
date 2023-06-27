@@ -8,7 +8,7 @@ import CartItem from "./CartItem/CartItem";
 import { loadStripe } from "@stripe/stripe-js";
 import { db } from "../../firebase";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
-import { showSignIn} from '../../ReduxActions/showSignInActions';
+import { showSignIn } from '../../ReduxActions/showSignInActions';
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -21,11 +21,14 @@ export default function Cart() {
 
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
 
+    // Function that leads user to Stripe checkout:
     const createCheckout = async () => {
-        if(!signedIn) {
+        // If user is not signed in, prompt him to do so
+        if (!signedIn) {
             dispatch(showSignIn());
             return
         }
+        // We need to pass array to line_items key when we create checkout_session document to have all our items added and price calculated
         const lineItems = [];
         cartItems.forEach(item => {
             lineItems.push({
@@ -33,22 +36,26 @@ export default function Cart() {
                 quantity: item.count
             })
         });
+        // If cart is empty, break and inform user
         if (lineItems.length === 0) {
             window.alert('Your cart is empty, please add products to continue to checkout.')
             return
         }
         try {
+            // Create new checkout_session document
             const docRef = await addDoc(collection(db, 'customers', user.uid, 'checkout_sessions'), {
                 mode: 'payment',
                 line_items: lineItems,
                 success_url: window.location.origin,
                 cancel_url: window.location.origin,
             });
+            // onSnapshot is here because some properties that we need will be automatically added, and we are waiting for them
             await onSnapshot(docRef, async (doc) => {
                 const { error, sessionId } = doc.data();
                 if (error) {
                     alert(error.message);
                 }
+                // If properties are added successfully, we should have sessionId that we use to direct user to checkout
                 if (sessionId) {
                     const stripe = await loadStripe('pk_test_51NNCqXKUtXesZvVb2fpF5NesqqvITDuYNWtIXEZsw5PrXl2gTdygp7hWhyaGjW5Jl2xtopXf0Cz9jhLsGCUrXUAR00FwIjkVjw');
                     stripe.redirectToCheckout({ sessionId });

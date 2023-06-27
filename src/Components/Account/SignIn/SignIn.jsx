@@ -15,10 +15,12 @@ export default function SignIn() {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const show = useSelector(state => state.showSignIn);
+    const inCart = useSelector(state => state.showCart);
     const handleClose = () => dispatch(hideSignIn());
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
+    // Handle sign up
     const firebaseSignUp = () => {
         createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
@@ -29,13 +31,19 @@ export default function SignIn() {
                 }
                 dispatch(signIn(user));
                 dispatch(hideSignIn());
-                navigate('/account');
+                // There are two places that prompt user to sign in/up - cart and link to account page
+                // If user is not in cart, then it means user wants to navigate to account page:
+                if (!inCart) {
+                    navigate('/account');
+                }
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 window.alert(errorMessage);
             });
     }
+
+    // Handle sign in
     const firebaseSignIn = () => {
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
             .then((userCredential) => {
@@ -46,7 +54,9 @@ export default function SignIn() {
                 }
                 dispatch(signIn(user));
                 dispatch(hideSignIn());
-                navigate('/account');
+                if (!inCart) {
+                    navigate('/account');
+                }
             })
             .catch((error) => {
                 const errorMessage = error.message;
