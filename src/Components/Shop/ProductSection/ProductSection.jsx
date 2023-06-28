@@ -7,8 +7,9 @@ export default function ProductSection({ products }) {
         <Row className="product-row gap-3 mb-5">
             {products.map((product, index) => (
                 <ItemCard
-                    key= {index}
-                    product = {product}
+                    key={index}
+                    index = {index}
+                    product={product}
                 />
             ))}
         </Row>

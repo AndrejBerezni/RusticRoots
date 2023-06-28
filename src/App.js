@@ -27,8 +27,8 @@ function App() {
   // Load products:
   useEffect(() => {
     const fetchProducts = async () => {
-      // Don't show spinner on home page while loading products in the background
-      if (location.pathname !== "/") {
+      // Don't show spinner on home page or account page while loading products in the background
+      if (location.pathname !== "/" && location.pathname !== "/account") {
         dispatch(showSpinner());
       }
       const honey = await getProducts("Honey");

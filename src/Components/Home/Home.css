@@ -131,7 +131,7 @@
 }
 
 @media (max-width: 768px) {
-  .row:nth-of-type(1) {
+  .about-us {
     flex-direction: column-reverse;
   }
 }

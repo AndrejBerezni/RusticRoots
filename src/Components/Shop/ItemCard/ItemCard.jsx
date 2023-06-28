@@ -1,12 +1,13 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import './ItemCard.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import cartImg from '../../../Assets/shopping-cart.png';
 import { useDispatch } from "react-redux";
-import { addItem } from '../../../ReduxActions/manageItemsInCart'
+import { addItem } from '../../../ReduxActions/manageItemsInCart';
+import { motion } from "framer-motion";
 
-export default function ItemCard({ product }) {
+export default function ItemCard({ product, index }) {
     const dispatch = useDispatch();
 
     // Handle item count on card:
@@ -31,7 +32,22 @@ export default function ItemCard({ product }) {
         setCount(1)
     }
     return (
-        <Card className='product-card' style={{ width: '18rem' }}>
+        <motion.Card
+            className='product-card'
+            style={{ width: '18rem' }}
+            animate={{
+                y: 0,
+                scale: 1
+            }}
+            initial={{
+                y: 100,
+                scale: 0
+            }}
+            transition={{
+                duration: 1,
+                delay: index / 5
+            }}
+        >
             <Card.Img variant="top" src={product.image} className='card-img' />
             <Card.Body>
                 <Card.Title className='product-card-title'>{product.name}</Card.Title>
@@ -47,6 +63,6 @@ export default function ItemCard({ product }) {
                     <img alt='cart' className='btn-img' src={cartImg} />Add to cart
                 </Button>
             </Card.Body>
-        </Card>
+        </motion.Card>
     )
 }

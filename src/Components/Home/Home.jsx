@@ -8,6 +8,7 @@ import { heroText, honeyText, ciderText } from '../../Data/Hometext'
 import logo from "../../Assets/logo-nobg.png"
 import cider from "../../Assets/roxburyrussetcider.png"
 import honey from "../../Assets/tilia.png";
+import { motion } from "framer-motion";
 
 function ProductDescription({ img, title, btnText, text, target }) {
     return (
@@ -22,28 +23,72 @@ function ProductDescription({ img, title, btnText, text, target }) {
 export default function Home() {
     return (
         <Container className="home">
-            <Row className="d-flex justify-content-center align-items-center mt-3 mb-5">
+            <Row className="about-us d-flex justify-content-center align-items-center mt-3 mb-5">
                 <Col xs md={5}>
-                    <p className="hero-text">{heroText}</p>
+                    <motion.p
+                        className="hero-text"
+                        animate={{
+                            x: 0,
+                            opacity: 1
+                        }}
+                        initial={{
+                            x: -500,
+                            opacity: 0
+                        }}
+                        transition={{
+                            duration: 1.2
+                        }}
+                    >
+                        {heroText}
+                    </motion.p>
                 </Col>
                 <Col xs md={5}>
-                    <Image src={logo} className="logo" />
+                    <motion.img
+                        src={logo}
+                        className="logo"
+                        animate={{
+                            x:0,
+                            scale: 1,
+                            opacity: 1
+                        }}
+                        initial={{
+                            x: 500,
+                            scale: 0,
+                            opacity: 0
+                        }}
+                        transition={{
+                            duration: 1.2
+                        }}
+                    />
                 </Col>
             </Row>
-            <Row className="product-description-section d-flex justify-content-around align-items-strech my-3">
-                <ProductDescription 
-                img={cider}
-                 text={ciderText} 
-                 title={'Apple Cider'} 
-                 btnText={'Shop Cider'} 
-                 target={'/shop/cider'}/>
-                <ProductDescription 
-                img={honey} 
-                text={honeyText} 
-                title={'Honey'} 
-                btnText={'Shop Honey'} 
-                target={'/shop/honey'}/>
-            </Row>
+            <motion.div
+                className="row product-description-section d-flex justify-content-around align-items-strech my-3"
+                animate={{
+                    y: 0,
+                    opacity: 1
+                }}
+                initial={{
+                    y:300,
+                    opacity: 0
+                }}
+                transition={{
+                    duration: 1.2
+                }}
+                >
+                <ProductDescription
+                    img={cider}
+                    text={ciderText}
+                    title={'Apple Cider'}
+                    btnText={'Shop Cider'}
+                    target={'/shop/cider'} />
+                <ProductDescription
+                    img={honey}
+                    text={honeyText}
+                    title={'Honey'}
+                    btnText={'Shop Honey'}
+                    target={'/shop/honey'} />
+            </motion.div>
         </Container>
     )
 }
