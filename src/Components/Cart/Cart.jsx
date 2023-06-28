@@ -1,17 +1,23 @@
 import React from "react";
-import './Cart.css'
+import './Cart.css';
+// Components
+import CartItem from "./CartItem/CartItem";
+// Bootstrap
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Alert from "react-bootstrap/Alert";
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { hideCart } from "../../ReduxActions/showCartActions";
-import CartItem from "./CartItem/CartItem";
-import { loadStripe } from "@stripe/stripe-js";
-import { db } from "../../firebase";
-import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { showSignIn } from '../../ReduxActions/showSignInActions';
 import { showAlert } from "../../ReduxActions/showAlertActions";
-import Alert from "react-bootstrap/Alert";
 import { hideAlert } from "../../ReduxActions/showAlertActions";
+// Stripe
+import { loadStripe } from "@stripe/stripe-js";
+// Firebase
+import { db } from "../../firebase";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
+
 
 export default function Cart() {
     const dispatch = useDispatch();
@@ -21,12 +27,13 @@ export default function Cart() {
     const cartItems = useSelector(state => state.cart);
     const alert = useSelector((state) => state.showAlert.showAlert);
     const alertMessage = useSelector((state) => state.showAlert.message);
+
     const handleClose = () => {
         dispatch(hideAlert());
         dispatch(hideCart())
     };
-    let totalPrice = 0;
 
+    let totalPrice = 0;
     useSelector(state => state.cart).forEach(item => totalPrice += item.totalPrice);
 
     // Function that leads user to Stripe checkout:
@@ -46,7 +53,6 @@ export default function Cart() {
         });
         // If cart is empty, break and inform user
         if (lineItems.length === 0) {
-            console.log('asdasdas')
             dispatch(showAlert('Your cart is empty, please add products to continue to checkout.'));
             return
         }

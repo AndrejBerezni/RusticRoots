@@ -1,12 +1,17 @@
 import React from "react";
 import './Account.css';
+// Images
 import bear from '../../Assets/bear.png';
-import stripe from '../../Assets/stripe-logo.png'
+import stripe from '../../Assets/stripe-logo.png';
+// Bootstrap
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
+// Router
+import { Link } from "react-router-dom";
+// Redux
 import { useSelector } from "react-redux";
+// Framer-motion
 import { motion } from "framer-motion";
 
 export default function Account() {
@@ -15,40 +20,40 @@ export default function Account() {
         <Container className='account-page'>
             <Row>
                 <Col xs={12} md={5}>
-                    <motion.img 
-                    className='account-page-image'
-                    src={bear}
-                    animate={{
-                        x:0,
-                        opacity: 1,
-                        scale: 1
-                    }}
-                    initial={{
-                        x: -200,
-                        opacity:0,
-                        scale:0
-                    }}
-                    transition={{
-                        duration: 1.2
-                    }}
+                    <motion.img
+                        className='account-page-image'
+                        src={bear}
+                        animate={{
+                            x: 0,
+                            opacity: 1,
+                            scale: 1
+                        }}
+                        initial={{
+                            x: -200,
+                            opacity: 0,
+                            scale: 0
+                        }}
+                        transition={{
+                            duration: 1.2
+                        }}
                     />
                 </Col>
                 <Col xs={12} md={5}>
-                    <motion.div 
-                    className="account-page-details-div"
-                    animate={{
-                        x:0,
-                        opacity: 1,
-                        scale: 1
-                    }}
-                    initial={{
-                        x: 200,
-                        opacity:0,
-                        scale:0
-                    }}
-                    transition={{
-                        duration: 1.2
-                    }}
+                    <motion.div
+                        className="account-page-details-div"
+                        animate={{
+                            x: 0,
+                            opacity: 1,
+                            scale: 1
+                        }}
+                        initial={{
+                            x: 200,
+                            opacity: 0,
+                            scale: 0
+                        }}
+                        transition={{
+                            duration: 1.2
+                        }}
                     >
                         <h2 className='account-page-email'>{userEmail}</h2>
                         <p className="account-page-text">Payments on Rustic Roots are powered by</p>

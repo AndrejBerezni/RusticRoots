@@ -1,7 +1,10 @@
 import React from "react";
 import './CartItem.css';
+// Bootstrap
 import Button from 'react-bootstrap/Button';
+// Images
 import deleteIcon from '../../../Assets/delete.png';
+// Redux
 import { useDispatch } from "react-redux";
 import { incrementItemNumber, decrementItemNumber, removeItem } from "../../../ReduxActions/manageItemsInCart";
 

@@ -1,5 +1,7 @@
 import React from "react";
+// Bootstrap
 import Row from 'react-bootstrap/Row';
+// Components
 import ItemCard from "../ItemCard/ItemCard";
 
 export default function ProductSection({ products }) {
@@ -8,7 +10,7 @@ export default function ProductSection({ products }) {
             {products.map((product, index) => (
                 <ItemCard
                     key={index}
-                    index = {index}
+                    index={index}
                     product={product}
                 />
             ))}

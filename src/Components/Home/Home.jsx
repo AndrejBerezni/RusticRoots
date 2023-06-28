@@ -1,13 +1,19 @@
 import React from "react";
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import { Col, Row, Container } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import './Home.css'
+// Bootstrap
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+// Router
+import { NavLink } from "react-router-dom";
+// Data and images
 import { heroText, honeyText, ciderText } from '../../Data/Hometext'
 import logo from "../../Assets/logo-nobg.png"
 import cider from "../../Assets/roxburyrussetcider.png"
 import honey from "../../Assets/tilia.png";
+// Framer-motion
 import { motion } from "framer-motion";
 
 function ProductDescription({ img, title, btnText, text, target }) {

@@ -1,15 +1,19 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import './SignIn.css';
+//Bootstrap
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from "react-bootstrap/Alert";
+// Router
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { hideSignIn } from "../../../ReduxActions/showSignInActions";
 import { hideSignInAlert, showSignInAlert } from "../../../ReduxActions/showAlertActions";
 import { signIn } from "../../../ReduxActions/signInActions";
+// Firebase
 import { auth } from "../../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -20,6 +24,7 @@ export default function SignIn() {
     const inCart = useSelector(state => state.showCart);
     const alert = useSelector((state) => state.showSignInAlert.showAlert);
     const alertMessage = useSelector((state) => state.showSignInAlert.message);
+
     const handleClose = () => dispatch(hideSignIn());
     const emailRef = useRef(null);
     const passwordRef = useRef(null);

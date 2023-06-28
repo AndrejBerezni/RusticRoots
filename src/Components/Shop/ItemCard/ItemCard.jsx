@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import './ItemCard.css';
+// Bootstrap
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+// Images
 import cartImg from '../../../Assets/shopping-cart.png';
+// Redux
 import { useDispatch } from "react-redux";
 import { addItem } from '../../../ReduxActions/manageItemsInCart';
+// Framer-motion
 import { motion } from "framer-motion";
 
 export default function ItemCard({ product, index }) {

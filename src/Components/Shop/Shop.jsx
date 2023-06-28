@@ -1,6 +1,8 @@
 import React from "react";
 import './Shop.css';
+// Bootstrap
 import Container from 'react-bootstrap/Container';
+// Router
 import { Outlet, Link, useLocation } from "react-router-dom";
 
 export default function Shop() {

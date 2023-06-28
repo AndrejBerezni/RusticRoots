@@ -1,15 +1,21 @@
 import React from "react";
 import './Navbar.css';
+// Bootstrap
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+// Router
 import { NavLink } from "react-router-dom";
+// Images
 import cart from '../../Assets/shopping-cart.png';
+// Redux
 import { useSelector, useDispatch } from "react-redux";
-import Cart from "../Cart/Cart";
 import { showCart } from "../../ReduxActions/showCartActions";
-import SignIn from "../Account/SignIn/SignIn";
 import { showSignIn } from "../../ReduxActions/showSignInActions";
+// Components
+import Cart from "../Cart/Cart";
+import SignIn from "../Account/SignIn/SignIn";
+
 
 
 export default function Navigation() {

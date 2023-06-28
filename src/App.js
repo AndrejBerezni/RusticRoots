@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
+import Spinner from "react-bootstrap/Spinner";
+// Components
 import Navigation from "./Components/Navbar/Navbar";
 import Home from "./Components/Home/Home";
 import Shop from "./Components/Shop/Shop";
 import Account from "./Components/Account/Account";
-import { Routes, Route, useLocation } from "react-router-dom";
 import ProductSection from "./Components/Shop/ProductSection/ProductSection";
+// Router
+import { Routes, Route, useLocation } from "react-router-dom";
+// Firebase
 import { getProducts } from "./firebase";
-import Spinner from "react-bootstrap/Spinner";
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { showSpinner, hideSpinner } from "./ReduxActions/showSpinnerActions";
 
