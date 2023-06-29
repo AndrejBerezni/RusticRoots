@@ -62,7 +62,7 @@ function App() {
           />
         </Route>
         <Route path="/account" element={<Account />} />
-        <Route path="*" element={<Home />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
       {spinner && (
         <Spinner
