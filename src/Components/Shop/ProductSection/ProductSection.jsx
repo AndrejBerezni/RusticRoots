@@ -3,6 +3,8 @@ import React from "react";
 import Row from 'react-bootstrap/Row';
 // Components
 import ItemCard from "../ItemCard/ItemCard";
+//PropTypes
+import PropTypes from 'prop-types';
 
 export default function ProductSection({ products }) {
     return (
@@ -17,3 +19,7 @@ export default function ProductSection({ products }) {
         </Row>
     )
 };
+
+ProductSection.propTypes = {
+    products: PropTypes.object
+}

@@ -15,6 +15,8 @@ import cider from "../../Assets/roxburyrussetcider.png"
 import honey from "../../Assets/tilia.png";
 // Framer-motion
 import { motion } from "framer-motion";
+//PropTypes
+import PropTypes from 'prop-types';
 
 function ProductDescription({ img, title, btnText, text, target }) {
     return (
@@ -26,6 +28,15 @@ function ProductDescription({ img, title, btnText, text, target }) {
         </Col>
     )
 }
+
+ProductDescription.propTypes = {
+    img: PropTypes.string,
+    title: PropTypes.string,
+    btnText: PropTypes.string,
+    text: PropTypes.string,
+    target: PropTypes.string,
+}
+
 export default function Home() {
     return (
         <Container className="home">

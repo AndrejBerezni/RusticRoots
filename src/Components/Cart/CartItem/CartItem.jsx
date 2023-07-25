@@ -7,6 +7,8 @@ import deleteIcon from '../../../Assets/delete.png';
 // Redux
 import { useDispatch } from "react-redux";
 import { incrementItemNumber, decrementItemNumber, removeItem } from "../../../ReduxActions/manageItemsInCart";
+//PropTypes
+import PropTypes from 'prop-types';
 
 export default function CartItem({ item }) {
     const dispatch = useDispatch();
@@ -30,4 +32,8 @@ export default function CartItem({ item }) {
             <p className="cart-item-total-price">€{item.totalPrice}</p>
         </div>
     )
+}
+
+CartItem.propTypes = {
+    item: PropTypes.object
 }

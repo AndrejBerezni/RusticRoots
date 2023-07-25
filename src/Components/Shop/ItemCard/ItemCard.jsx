@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { addItem } from '../../../ReduxActions/manageItemsInCart';
 // Framer-motion
 import { motion } from "framer-motion";
+//PropTypes
+import PropTypes from 'prop-types';
 
 export default function ItemCard({ product, index }) {
     const dispatch = useDispatch();
@@ -69,4 +71,9 @@ export default function ItemCard({ product, index }) {
             </Card.Body>
         </motion.Card>
     )
+}
+
+ItemCard.propTypes = {
+    product: PropTypes.object,
+    index: PropTypes.number
 }

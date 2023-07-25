@@ -14,6 +14,23 @@ import { useSelector } from "react-redux";
 // Framer-motion
 import { motion } from "framer-motion";
 
+const framerAnimate = {
+    x: 0,
+    opacity: 1,
+    scale: 1
+}
+
+const framerInitial = {
+    x: -200,
+    opacity: 0,
+    scale: 0
+}
+
+const framerTransition = {
+    duration: 1.2
+}
+
+
 export default function Account() {
     const userEmail = useSelector(state => state.signedIn.user.email)
     return (
@@ -23,37 +40,17 @@ export default function Account() {
                     <motion.img
                         className='account-page-image'
                         src={bear}
-                        animate={{
-                            x: 0,
-                            opacity: 1,
-                            scale: 1
-                        }}
-                        initial={{
-                            x: -200,
-                            opacity: 0,
-                            scale: 0
-                        }}
-                        transition={{
-                            duration: 1.2
-                        }}
+                        animate={framerAnimate}
+                        initial={framerInitial}
+                        transition={framerTransition}
                     />
                 </Col>
                 <Col xs={12} md={5}>
                     <motion.div
                         className="account-page-details-div"
-                        animate={{
-                            x: 0,
-                            opacity: 1,
-                            scale: 1
-                        }}
-                        initial={{
-                            x: 200,
-                            opacity: 0,
-                            scale: 0
-                        }}
-                        transition={{
-                            duration: 1.2
-                        }}
+                        animate={framerAnimate}
+                        initial={framerInitial}
+                        transition={framerTransition}
                     >
                         <h2 className='account-page-email'>{userEmail}</h2>
                         <p className="account-page-text">Payments on Rustic Roots are powered by</p>
