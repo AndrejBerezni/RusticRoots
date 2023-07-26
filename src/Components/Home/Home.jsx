@@ -18,6 +18,8 @@ import { motion } from "framer-motion";
 //PropTypes
 import PropTypes from 'prop-types';
 
+const transitionFramer = { duration: 1.2 }
+
 function ProductDescription({ img, title, btnText, text, target }) {
     return (
         <Col xs={10} md={5} className="product-description my-3 gap-3">
@@ -52,9 +54,7 @@ export default function Home() {
                             x: -500,
                             opacity: 0
                         }}
-                        transition={{
-                            duration: 1.2
-                        }}
+                        transition={transitionFramer}
                     >
                         {heroText}
                     </motion.p>
@@ -64,7 +64,7 @@ export default function Home() {
                         src={logo}
                         className="logo"
                         animate={{
-                            x:0,
+                            x: 0,
                             scale: 1,
                             opacity: 1
                         }}
@@ -73,9 +73,7 @@ export default function Home() {
                             scale: 0,
                             opacity: 0
                         }}
-                        transition={{
-                            duration: 1.2
-                        }}
+                        transition={transitionFramer}
                     />
                 </Col>
             </Row>
@@ -86,13 +84,11 @@ export default function Home() {
                     opacity: 1
                 }}
                 initial={{
-                    y:300,
+                    y: 300,
                     opacity: 0
                 }}
-                transition={{
-                    duration: 1.2
-                }}
-                >
+                transition={transitionFramer}
+            >
                 <ProductDescription
                     img={cider}
                     text={ciderText}
@@ -105,6 +101,22 @@ export default function Home() {
                     title={'Honey'}
                     btnText={'Shop Honey'}
                     target={'/shop/honey'} />
+            </motion.div>
+            <motion.div
+                className="arrow"
+                animate={{
+                    opacity: 1
+                }}
+                initial={{
+                    opacity: 0
+                }}
+                transition={{
+                    delay: 2,
+                    duration: 0.5
+                }}>
+                <span></span>
+                <span></span>
+                <span></span>
             </motion.div>
         </Container>
     )

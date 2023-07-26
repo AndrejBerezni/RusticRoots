@@ -1,4 +1,7 @@
 @import "../../App.css";
+.about-us {
+  min-height: 90vh;
+}
 .hero-text {
   text-align: justify;
   word-spacing: 3px;
@@ -124,6 +127,48 @@
 .product-title:hover {
   cursor: default;
 }
+
+/* Arrow, taken from https://codepen.io/vlt_dev/pen/NWMNzpE*/
+.arrow {
+  position: absolute;
+  bottom: 10%;
+  right: 40px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.arrow span {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid var(--secondary-accent);
+  border-right: 5px solid var(--secondary-accent);
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(20px, 20px);
+  }
+}
 @media (min-width: 1200px) {
   .hero-text {
     font-size: 1.3rem;
@@ -133,5 +178,8 @@
 @media (max-width: 768px) {
   .about-us {
     flex-direction: column-reverse;
+  }
+  .arrow {
+    display: none
   }
 }
