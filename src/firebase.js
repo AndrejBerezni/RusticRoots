@@ -9,7 +9,7 @@ import {
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAKNEPNYjgwxEBy55xqUQnmjuOGNYx2KNQ",
+  apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: "rustic-roots.firebaseapp.com",
   projectId: "rustic-roots",
   storageBucket: "rustic-roots.appspot.com",
