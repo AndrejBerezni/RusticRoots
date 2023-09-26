@@ -10,8 +10,7 @@ import Alert from "react-bootstrap/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { hideCart } from "../../ReduxActions/showCartActions";
 import { showSignIn } from '../../ReduxActions/showSignInActions';
-import { showAlert } from "../../ReduxActions/showAlertActions";
-import { hideAlert } from "../../ReduxActions/showAlertActions";
+import { showAlert, hideAlert } from "../../ReduxActions/showAlertActions";
 // Stripe
 import { loadStripe } from "@stripe/stripe-js";
 // Firebase
@@ -93,7 +92,7 @@ export default function Cart() {
                 <Modal.Title className='cart-title'>Your Order</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {cartItems.map((item, index) => (<CartItem key={index} item={item} />))}
+                {cartItems.map((item, index) => (<CartItem key={item.id} item={item} />))}
                 <h2 className="cart-total-price">Total: €{Math.round(totalPrice * 100) / 100}</h2>
                 {alert && (
                     <Alert

@@ -6,8 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from "react-bootstrap/Alert";
 // Router
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { hideSignIn } from "../../../ReduxActions/showSignInActions";
