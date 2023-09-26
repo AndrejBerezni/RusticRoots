@@ -18,7 +18,7 @@ export default function ItemCard({ product, index }) {
 
     // Handle item count on card:
     const [count, setCount] = useState(1);
-    const decrementCount = () => count > 1 ? setCount(count - 1) : setCount(count);
+    const decrementCount = () => count > 1 ? setCount(count - 1) : null;
     const incrementCount = () => setCount(count + 1);
 
     // Handle adding items to cart
