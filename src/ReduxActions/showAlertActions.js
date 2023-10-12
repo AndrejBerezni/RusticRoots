@@ -1,27 +1,27 @@
 const showSignInAlert = (alertText) => {
-    return {
-        type: 'SHOW SIGN IN ALERT',
-        payload: alertText
-    }
-}
+  return {
+    type: 'SHOW SIGN IN ALERT',
+    payload: alertText,
+  };
+};
 
 const hideSignInAlert = () => {
-    return {
-        type: 'HIDE SIGN IN ALERT'
-    }
-}
+  return {
+    type: 'HIDE SIGN IN ALERT',
+  };
+};
 
 const showAlert = (alertText) => {
-    return {
-        type: 'SHOW ALERT',
-        payload: alertText
-    }
-}
+  return {
+    type: 'SHOW ALERT',
+    payload: alertText,
+  };
+};
 
 const hideAlert = () => {
-    return {
-        type: 'HIDE ALERT'
-    }
-}
+  return {
+    type: 'HIDE ALERT',
+  };
+};
 
-export {showAlert, hideAlert, showSignInAlert, hideSignInAlert}
+export { showAlert, hideAlert, showSignInAlert, hideSignInAlert };

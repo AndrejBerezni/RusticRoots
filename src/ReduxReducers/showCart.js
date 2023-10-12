@@ -1,8 +1,8 @@
 const showCartReducer = (state = false, action) => {
   switch (action.type) {
-    case "SHOW CART":
+    case 'SHOW CART':
       return true;
-    case "HIDE CART":
+    case 'HIDE CART':
       return false;
     default:
       return state;

@@ -1,75 +1,81 @@
 @import '../../../App.css';
 
 .cart-item {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--secondary-accent)
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--secondary-accent);
 }
 
 .cart-item-name {
-    font-family: var(--header-font);
-    font-size: 1.1rem;
-    align-self: flex-start;
+  font-family: var(--header-font);
+  font-size: 1.1rem;
+  align-self: flex-start;
 }
 
 .cart-item-btns {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 15px;
-    align-self: flex-start;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  align-self: flex-start;
 }
 
 .cart-item-btns > p {
-    font-size: 1.2rem;
-    margin: 0;
-    font-family: var(--header-font);
-    font-weight: bold;
-    border: 2px solid var(--accent);
-    padding: 4px 8px;
-    border-radius: 5px;
-    background-color: var(--background);    
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: var(--header-font);
+  font-weight: bold;
+  border: 2px solid var(--accent);
+  padding: 4px 8px;
+  border-radius: 5px;
+  background-color: var(--background);
 }
 
-.cart-item-btns > p:hover, .cart-item-name:hover, .cart-item-total-price:hover {
-    cursor: default
+.cart-item-btns > p:hover,
+.cart-item-name:hover,
+.cart-item-total-price:hover {
+  cursor: default;
 }
 
-.cart-item-delete-btn, .cart-item-decrement-btn,  .cart-item-increment-btn {
-    height: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    border: none;
-    box-shadow: 1px 1px 2px var(--accent);
+.cart-item-delete-btn,
+.cart-item-decrement-btn,
+.cart-item-increment-btn {
+  height: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  border: none;
+  box-shadow: 1px 1px 2px var(--accent);
 }
 
-.cart-item-decrement-btn,  .cart-item-increment-btn {
-    background-color: var(--accent);
+.cart-item-decrement-btn,
+.cart-item-increment-btn {
+  background-color: var(--accent);
 }
 
-.cart-item-decrement-btn:hover,  .cart-item-increment-btn:hover {
-    transform: scale(1.1);
-    background-color: var(--secondary-accent);
+.cart-item-decrement-btn:hover,
+.cart-item-increment-btn:hover {
+  transform: scale(1.1);
+  background-color: var(--secondary-accent);
 }
 
 .cart-item-delete-btn {
-    background-color: var(--secondary-accent);
+  background-color: var(--secondary-accent);
 }
 
 .cart-item-delete-btn:hover {
-    background-color: var(--background);
-    transform: scale(1.1);
-    border: 1px solid var(--text);
+  background-color: var(--background);
+  transform: scale(1.1);
+  border: 1px solid var(--text);
 }
 .cart-item-delete-icon {
-    height: 100%;
+  height: 100%;
 }
 
 .cart-item-total-price {
-    font-family: var(--header-font);
-    font-size: 1.2rem;
-    align-self: flex-end;
+  font-family: var(--header-font);
+  font-size: 1.2rem;
+  align-self: flex-end;
 }

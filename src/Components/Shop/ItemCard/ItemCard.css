@@ -1,4 +1,4 @@
-@import "../../../App.css";
+@import '../../../App.css';
 
 .product-card {
   background-color: var(--primary-button);
@@ -112,7 +112,7 @@
 .product-card-price:hover,
 .product-card-size:hover,
 .product-card-title:hover {
-    cursor: default;
+  cursor: default;
 }
 
 /* .product-card-description:hover {

@@ -1,20 +1,20 @@
 const initialState = {
   signedIn: false,
-  user: {}
-}
+  user: {},
+};
 
 const signInReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SIGN IN":
+    case 'SIGN IN':
       return {
         isSignedIn: true,
-        user: action.payload
-      }
-    case "SIGN OUT":
+        user: action.payload,
+      };
+    case 'SIGN OUT':
       return {
         isSignedIn: false,
-        user: {}
-      }
+        user: {},
+      };
     default:
       return state;
   }

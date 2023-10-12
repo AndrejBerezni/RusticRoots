@@ -1,13 +1,13 @@
 const showSignIn = () => {
-    return {
-        type: 'SHOW SIGN IN'
-    }
-}
+  return {
+    type: 'SHOW SIGN IN',
+  };
+};
 
 const hideSignIn = () => {
-    return {
-        type: 'HIDE SIGN IN'
-    }
-}
+  return {
+    type: 'HIDE SIGN IN',
+  };
+};
 
-export {showSignIn, hideSignIn}
+export { showSignIn, hideSignIn };

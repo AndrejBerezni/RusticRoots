@@ -1,13 +1,13 @@
 const signIn = (user) => {
   return {
-    type: "SIGN IN",
-    payload: user
+    type: 'SIGN IN',
+    payload: user,
   };
 };
 
 const signOut = () => {
   return {
-    type: "SIGN OUT",
+    type: 'SIGN OUT',
   };
 };
 

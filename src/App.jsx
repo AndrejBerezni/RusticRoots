@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-// Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import Spinner from "react-bootstrap/Spinner";
-// Components
-import Navigation from "./Components/Navbar/Navbar";
-import Home from "./Components/Home/Home";
-import Shop from "./Components/Shop/Shop";
-import Account from "./Components/Account/Account";
-import ProductSection from "./Components/Shop/ProductSection/ProductSection";
-// Router
-import { Routes, Route, useLocation } from "react-router-dom";
-// Firebase
-import { getProducts } from "./firebase";
-// Redux
-import { useSelector, useDispatch } from "react-redux";
-import { showSpinner, hideSpinner } from "./ReduxActions/showSpinnerActions";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Spinner from 'react-bootstrap/Spinner';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+import Navigation from './Components/Navbar/Navbar';
+import Home from './Components/Home/Home';
+import Shop from './Components/Shop/Shop';
+import Account from './Components/Account/Account';
+import ProductSection from './Components/Shop/ProductSection/ProductSection';
+import { getProducts } from './firebase';
+import { showSpinner, hideSpinner } from './ReduxActions/showSpinnerActions';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,11 +29,11 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       // Don't show spinner on home page or account page while loading products in the background
-      if (location.pathname !== "/" && location.pathname !== "/account") {
+      if (location.pathname !== '/' && location.pathname !== '/account') {
         dispatch(showSpinner());
       }
-      const honey = await getProducts("Honey");
-      const cider = await getProducts("Cider");
+      const honey = await getProducts('Honey');
+      const cider = await getProducts('Cider');
       setHoneyProducts(honey);
       setCiderProducts(cider);
       dispatch(hideSpinner());

@@ -1,35 +1,36 @@
 @import '../../App.css';
 
 .cart-title {
-    font-family: var(--header-font);
-    font-weight: bold;
+  font-family: var(--header-font);
+  font-weight: bold;
 }
 
 .cart-total-price {
-    align-self: flex-end;
-    font-weight: bold;
-    font-family: var(--header-font);
+  align-self: flex-end;
+  font-weight: bold;
+  font-family: var(--header-font);
 }
 
-.continue-shopping-btn, .checkout-btn {
-    font-family: var(--header-font);
-    font-weight: bold;
-    transition: .3s;
-    box-shadow: 1px 1px 2px var(--accent);
-    border: none;
+.continue-shopping-btn,
+.checkout-btn {
+  font-family: var(--header-font);
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 1px 1px 2px var(--accent);
+  border: none;
 }
 
 .continue-shopping-btn {
-    background-color: var(--secondary-button);
-    color: var(--text);
-    
+  background-color: var(--secondary-button);
+  color: var(--text);
 }
 
 .checkout-btn {
-    background-color: var(--secondary-accent);
+  background-color: var(--secondary-accent);
 }
 
-.continue-shopping-btn:hover, .checkout-btn:hover {
-    transform: scale(1.05);
-    background-color: var(--accent);
+.continue-shopping-btn:hover,
+.checkout-btn:hover {
+  transform: scale(1.05);
+  background-color: var(--accent);
 }
