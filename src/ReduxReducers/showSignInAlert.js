@@ -3,6 +3,7 @@ const initialState = {
   message: '',
 };
 
+// eslint-disable-next-line default-param-last
 const showSignInAlertReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SHOW SIGN IN ALERT':

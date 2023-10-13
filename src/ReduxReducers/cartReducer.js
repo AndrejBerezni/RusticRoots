@@ -1,5 +1,6 @@
 const initialState = [];
 
+// eslint-disable-next-line default-param-last
 const cartReducer = (state = initialState, action) => {
   let index;
   switch (action.type) {
@@ -17,16 +18,24 @@ const cartReducer = (state = initialState, action) => {
     case 'INCREMENT ITEM NUMBER':
       index = state.findIndex((object) => object.id === action.payload.id);
       if (index > -1) {
+        const updatedItem = { ...state[index] };
+        updatedItem.count += 1;
+        updatedItem.totalPrice =
+          Math.round(updatedItem.count * updatedItem.price * 100) / 100;
         const updatedState = [...state];
-        updatedState[index].count++;
+        updatedState[index] = updatedItem;
         return updatedState;
       }
       return state;
     case 'DECREMENT ITEM NUMBER':
       index = state.findIndex((object) => object.id === action.payload.id);
       if (index > -1 && state[index].count > 1) {
+        const updatedItem = { ...state[index] };
+        updatedItem.count -= 1;
+        updatedItem.totalPrice =
+          Math.round(updatedItem.count * updatedItem.price * 100) / 100;
         const updatedState = [...state];
-        updatedState[index].count--;
+        updatedState[index] = updatedItem;
         return updatedState;
       }
       return state;

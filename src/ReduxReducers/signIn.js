@@ -3,6 +3,7 @@ const initialState = {
   user: {},
 };
 
+// eslint-disable-next-line default-param-last
 const signInReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SIGN IN':

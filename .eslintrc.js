@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     'prettier/prettier': 'warn',
     'import/order': ['error', { 'newlines-between': 'always' }],
+    'no-use-before-define': ['error', { functions: false }],
   },
 };

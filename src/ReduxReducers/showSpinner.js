@@ -1,3 +1,4 @@
+// eslint-disable-next-line default-param-last
 const showSpinnerReducer = (state = false, action) => {
   switch (action.type) {
     case 'SHOW SPINNER':

@@ -19,6 +19,7 @@ export default function ItemCard({ product, index }) {
 
   // Handle adding items to cart
   const addItemToCart = () => {
+    const totalPrice = Math.round(count * product.price * 100) / 100;
     const item = {
       id: `${product.name} (${product.size})`,
       name: product.name,
@@ -26,10 +27,7 @@ export default function ItemCard({ product, index }) {
       price: product.price,
       priceId: product.priceId,
       count,
-      get totalPrice() {
-        // eslint-disable-next-line react/no-this-in-sfc
-        return Math.round(this.count * this.price * 100) / 100;
-      },
+      totalPrice,
     };
     dispatch(addItem(item));
     setCount(1);
