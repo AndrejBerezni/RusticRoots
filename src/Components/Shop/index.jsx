@@ -1,4 +1,3 @@
-import React from 'react'
 import './Shop.css'
 import Container from 'react-bootstrap/Container'
 import { Outlet, Link, useLocation } from 'react-router-dom'
