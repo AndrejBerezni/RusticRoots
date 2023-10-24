@@ -1,18 +1,16 @@
-import React from 'react';
-import './CartItem.css';
-import Button from 'react-bootstrap/Button';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
-
-import deleteIcon from '../../../Assets/delete.png';
+import './CartItem.css'
+import PropTypes from 'prop-types'
+import Button from 'react-bootstrap/Button'
+import { useDispatch } from 'react-redux'
+import deleteIcon from '../../../Assets/delete.png'
 import {
   incrementItemNumber,
   decrementItemNumber,
   removeItem,
-} from '../../../ReduxActions/manageItemsInCart';
+} from '../../../ReduxActions/manageItemsInCart'
 
 export default function CartItem({ item }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
     <div className="cart-item">
@@ -44,10 +42,10 @@ export default function CartItem({ item }) {
       </div>
       <p className="cart-item-total-price">€{item.totalPrice}</p>
     </div>
-  );
+  )
 }
 
 CartItem.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types, react/require-default-props
   item: PropTypes.object,
-};
+}

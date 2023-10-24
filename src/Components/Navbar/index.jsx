@@ -1,25 +1,23 @@
-import React from 'react';
-import './Navbar.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-
-import cart from '../../Assets/shopping-cart.png';
-import { showCart } from '../../ReduxActions/showCartActions';
-import { showSignIn } from '../../ReduxActions/showSignInActions';
-import Cart from '../Cart/Cart';
-import SignIn from '../Account/SignIn/SignIn';
+import './Navbar.css'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import { useSelector, useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import cart from '../../Assets/shopping-cart.png'
+import { showCart } from '../../ReduxActions/showCartActions'
+import { showSignIn } from '../../ReduxActions/showSignInActions'
+import SignIn from '../Account/SignIn'
+import Cart from '../Cart'
 
 export default function Navigation() {
-  const dispatch = useDispatch();
-  const isSignedIn = useSelector((state) => state.signedIn.isSignedIn);
-  let numberOfItemsInCart = 0;
+  const dispatch = useDispatch()
+  const isSignedIn = useSelector((state) => state.signedIn.isSignedIn)
+  let numberOfItemsInCart = 0
   useSelector((state) => state.cart).forEach(
     // eslint-disable-next-line no-return-assign
-    (item) => (numberOfItemsInCart += item.count),
-  );
+    (item) => (numberOfItemsInCart += item.count)
+  )
 
   return (
     <Navbar expand="md" sticky="top" className="navbar">
@@ -43,7 +41,7 @@ export default function Navigation() {
             ) : (
               <Nav.Link
                 onClick={() => {
-                  dispatch(showSignIn());
+                  dispatch(showSignIn())
                 }}
                 className="nav-link"
               >
@@ -52,7 +50,7 @@ export default function Navigation() {
             )}
             <Nav.Link
               onClick={() => {
-                dispatch(showCart());
+                dispatch(showCart())
               }}
             >
               <img src={cart} alt="cart" />
@@ -64,5 +62,5 @@ export default function Navigation() {
       <Cart />
       <SignIn />
     </Navbar>
-  );
+  )
 }

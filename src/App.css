@@ -5,8 +5,8 @@
   --secondary-button: #dfe0df;
   --accent: #533125;
   --secondary-accent: #f2af29;
-  --header-font: "Merriweather", serif;
-  --text-font: "Oswald", sans-serif;
+  --header-font: 'Merriweather', serif;
+  --text-font: 'Oswald', sans-serif;
 }
 
 * {

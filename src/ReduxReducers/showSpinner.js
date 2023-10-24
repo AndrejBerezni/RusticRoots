@@ -2,12 +2,12 @@
 const showSpinnerReducer = (state = false, action) => {
   switch (action.type) {
     case 'SHOW SPINNER':
-      return true;
+      return true
     case 'HIDE SPINNER':
-      return false;
+      return false
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default showSpinnerReducer;
+export default showSpinnerReducer

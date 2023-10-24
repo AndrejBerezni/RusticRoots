@@ -1,116 +1,115 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useRef } from 'react';
-import './SignIn.css';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useRef } from 'react'
+import './SignIn.css'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-} from 'firebase/auth';
-
-import { hideSignIn } from '../../../ReduxActions/showSignInActions';
+} from 'firebase/auth'
+import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import { useSelector, useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { auth } from '../../../firebase'
 import {
   hideSignInAlert,
   showSignInAlert,
-} from '../../../ReduxActions/showAlertActions';
-import { signIn } from '../../../ReduxActions/signInActions';
-import { auth } from '../../../firebase';
+} from '../../../ReduxActions/showAlertActions'
+import { hideSignIn } from '../../../ReduxActions/showSignInActions'
+import { signIn } from '../../../ReduxActions/signInActions'
 
 export default function SignIn() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const show = useSelector((state) => state.showSignIn);
-  const inCart = useSelector((state) => state.showCart);
-  const alert = useSelector((state) => state.showSignInAlert.showAlert);
-  const alertMessage = useSelector((state) => state.showSignInAlert.message);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const show = useSelector((state) => state.showSignIn)
+  const inCart = useSelector((state) => state.showCart)
+  const alert = useSelector((state) => state.showSignInAlert.showAlert)
+  const alertMessage = useSelector((state) => state.showSignInAlert.message)
 
-  const handleClose = () => dispatch(hideSignIn());
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const handleClose = () => dispatch(hideSignIn())
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
 
   // Handle sign up
   const firebaseSignUp = () => {
     createUserWithEmailAndPassword(
       auth,
       emailRef.current.value,
-      passwordRef.current.value,
+      passwordRef.current.value
     )
       .then((userCredential) => {
         // Signed in
         const user = {
           uid: userCredential.user.uid,
           email: userCredential.user.email,
-        };
-        dispatch(signIn(user));
-        dispatch(hideSignIn());
+        }
+        dispatch(signIn(user))
+        dispatch(hideSignIn())
         // There are two places that prompt user to sign in/up - cart and link to account page
         // If user is not in cart, then it means user wants to navigate to account page:
         if (!inCart) {
-          navigate('/account');
+          navigate('/account')
         }
       })
       .catch((error) => {
         // Adding user-friendly text for known errors:
-        let errorMessage;
+        let errorMessage
         if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
-          errorMessage = 'Email already in use, please use other one.';
+          errorMessage = 'Email already in use, please use other one.'
         } else if (
           error.message ===
           'Firebase: Password should be at least 6 characters (auth/weak-password).'
         ) {
           errorMessage =
-            'Password should be at least 6 characters long. Try again.';
+            'Password should be at least 6 characters long. Try again.'
         } else if (error.message === 'Firebase: Error (auth/missing-email).') {
-          errorMessage = 'Please add your email to sign up.';
+          errorMessage = 'Please add your email to sign up.'
         } else if (
           error.message === 'Firebase: Error (auth/missing-password).'
         ) {
-          errorMessage = 'Please create password to sign up.';
+          errorMessage = 'Please create password to sign up.'
         } else {
-          errorMessage = error.message;
+          errorMessage = error.message
         }
-        dispatch(showSignInAlert(errorMessage));
-      });
-  };
+        dispatch(showSignInAlert(errorMessage))
+      })
+  }
 
   // Handle sign in
   const firebaseSignIn = () => {
     signInWithEmailAndPassword(
       auth,
       emailRef.current.value,
-      passwordRef.current.value,
+      passwordRef.current.value
     )
       .then((userCredential) => {
         // Signed in
         const user = {
           uid: userCredential.user.uid,
           email: userCredential.user.email,
-        };
-        dispatch(signIn(user));
-        dispatch(hideSignIn());
+        }
+        dispatch(signIn(user))
+        dispatch(hideSignIn())
         if (!inCart) {
-          navigate('/account');
+          navigate('/account')
         }
       })
       .catch((error) => {
         // Adding user-friendly text for known errors:
-        let errorMessage;
+        let errorMessage
         if (error.message === 'Firebase: Error (auth/wrong-password).') {
-          errorMessage = 'Wrong password. Please try again.';
+          errorMessage = 'Wrong password. Please try again.'
         } else if (error.message === 'Firebase: Error (auth/user-not-found).') {
-          errorMessage = 'User not found.';
+          errorMessage = 'User not found.'
         } else if (error.message === 'Firebase: Error (auth/invalid-email).') {
-          errorMessage = 'Invalid email';
+          errorMessage = 'Invalid email'
         } else {
-          errorMessage = error.message;
+          errorMessage = error.message
         }
-        dispatch(showSignInAlert(errorMessage));
-      });
-  };
+        dispatch(showSignInAlert(errorMessage))
+      })
+  }
 
   return (
     <Modal
@@ -161,8 +160,8 @@ export default function SignIn() {
             className="sign-in-btn"
             type="submit"
             onClick={(e) => {
-              e.preventDefault();
-              firebaseSignIn();
+              e.preventDefault()
+              firebaseSignIn()
             }}
           >
             Sign In
@@ -179,5 +178,5 @@ export default function SignIn() {
         </p>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }

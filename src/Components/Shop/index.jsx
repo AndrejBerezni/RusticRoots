@@ -1,10 +1,10 @@
-import React from 'react';
-import './Shop.css';
-import Container from 'react-bootstrap/Container';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import React from 'react'
+import './Shop.css'
+import Container from 'react-bootstrap/Container'
+import { Outlet, Link, useLocation } from 'react-router-dom'
 
 export default function Shop() {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <Container className="shop">
@@ -28,5 +28,5 @@ export default function Shop() {
       </div>
       <Outlet />
     </Container>
-  );
+  )
 }

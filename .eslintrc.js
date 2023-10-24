@@ -3,7 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['airbnb', 'plugin:prettier/recommended'],
+  extends: [
+    'react-app',
+    'eslint:recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
+    'plugin:import/recommended',
+  ],
   plugins: ['prettier', 'import', 'react', 'jsx-a11y'],
   overrides: [
     {
@@ -16,13 +22,33 @@ module.exports = {
       },
     },
   ],
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   rules: {
     'prettier/prettier': 'warn',
-    'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/order': [
+      'warn',
+      {
+        groups: ['builtin', 'external', 'internal'],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['react'],
+        'newlines-between': 'never',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
     'no-use-before-define': ['error', { functions: false }],
+    'import/no-unresolved': 'off',
   },
-};
+}

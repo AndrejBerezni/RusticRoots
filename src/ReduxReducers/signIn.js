@@ -1,7 +1,7 @@
 const initialState = {
   signedIn: false,
   user: {},
-};
+}
 
 // eslint-disable-next-line default-param-last
 const signInReducer = (state = initialState, action) => {
@@ -10,15 +10,15 @@ const signInReducer = (state = initialState, action) => {
       return {
         isSignedIn: true,
         user: action.payload,
-      };
+      }
     case 'SIGN OUT':
       return {
         isSignedIn: false,
         user: {},
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default signInReducer;
+export default signInReducer

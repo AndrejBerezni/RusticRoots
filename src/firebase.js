@@ -1,45 +1,45 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
 import {
   getFirestore,
   getDocs,
   collection,
   query,
   where,
-} from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API,
-  authDomain: "rustic-roots.firebaseapp.com",
-  projectId: "rustic-roots",
-  storageBucket: "rustic-roots.appspot.com",
-  messagingSenderId: "1031858156050",
-  appId: "1:1031858156050:web:a1ae7ec20e0ed1fa119ecb",
-};
+  authDomain: 'rustic-roots.firebaseapp.com',
+  projectId: 'rustic-roots',
+  storageBucket: 'rustic-roots.appspot.com',
+  messagingSenderId: '1031858156050',
+  appId: '1:1031858156050:web:a1ae7ec20e0ed1fa119ecb',
+}
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
-const db = getFirestore(app);
-const auth = getAuth();
+const db = getFirestore(app)
+const auth = getAuth()
 
 // Get products
 async function getProducts(category) {
-  const productsArr = [];
+  const productsArr = []
   const q = query(
-    collection(db, "products"),
-    where("metadata.Category", "==", category)
-  );
-  const querySnapshot = await getDocs(q);
+    collection(db, 'products'),
+    where('metadata.Category', '==', category)
+  )
+  const querySnapshot = await getDocs(q)
 
   await Promise.all(
     querySnapshot.docs.map(async (doc) => {
-      const priceQuery = collection(db, "products", doc.id, "prices");
-      const priceSnapshot = await getDocs(priceQuery);
+      const priceQuery = collection(db, 'products', doc.id, 'prices')
+      const priceSnapshot = await getDocs(priceQuery)
 
-      const prices = priceSnapshot.docs.map((priceDoc) => priceDoc.data());
-      const priceId = priceSnapshot.docs.map((priceDoc) => priceDoc.id);
-      const productData = doc.data();
+      const prices = priceSnapshot.docs.map((priceDoc) => priceDoc.data())
+      const priceId = priceSnapshot.docs.map((priceDoc) => priceDoc.id)
+      const productData = doc.data()
 
       const productObj = {
         name: productData.name,
@@ -48,12 +48,12 @@ async function getProducts(category) {
         description: productData.description,
         image: productData.images ? productData.images[0] : null,
         priceId: priceId[0],
-      };
+      }
 
-      productsArr.push(productObj);
+      productsArr.push(productObj)
     })
-  );
-  return productsArr;
+  )
+  return productsArr
 }
 
-export { auth, app, db, getProducts };
+export { auth, app, db, getProducts }

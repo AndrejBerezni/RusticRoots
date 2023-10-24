@@ -2,12 +2,12 @@
 const showCartReducer = (state = false, action) => {
   switch (action.type) {
     case 'SHOW CART':
-      return true;
+      return true
     case 'HIDE CART':
-      return false;
+      return false
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default showCartReducer;
+export default showCartReducer

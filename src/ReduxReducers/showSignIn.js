@@ -2,12 +2,12 @@
 const showSignInReducer = (state = false, action) => {
   switch (action.type) {
     case 'SHOW SIGN IN':
-      return true;
+      return true
     case 'HIDE SIGN IN':
-      return false;
+      return false
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default showSignInReducer;
+export default showSignInReducer

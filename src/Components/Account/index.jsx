@@ -1,33 +1,29 @@
-import React from 'react';
-import './Account.css';
-import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
-import { Col, Row, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
-
-import stripe from '../../Assets/stripe-logo.png';
-import bear from '../../Assets/bear.png';
+import './Account.css'
+import { motion } from 'framer-motion'
+import { Col, Row, Container, Button, Image } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import bear from '../../Assets/bear.png'
+import stripe from '../../Assets/stripe-logo.png'
 
 const framerAnimate = {
   x: 0,
   opacity: 1,
   scale: 1,
-};
+}
 
 const framerInitial = {
   x: -200,
   opacity: 0,
   scale: 0,
-};
+}
 
 const framerTransition = {
   duration: 1.2,
-};
+}
 
 export default function Account() {
-  const userEmail = useSelector((state) => state.signedIn.user.email);
+  const userEmail = useSelector((state) => state.signedIn.user.email)
   return (
     <Container className="account-page">
       <Row>
@@ -67,5 +63,5 @@ export default function Account() {
         </Col>
       </Row>
     </Container>
-  );
+  )
 }

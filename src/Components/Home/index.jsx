@@ -1,20 +1,18 @@
-import React from 'react';
-import './Home.css';
-import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
+import './Home.css'
+import { motion } from 'framer-motion'
+import PropTypes from 'prop-types'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
+import Row from 'react-bootstrap/Row'
+import { NavLink } from 'react-router-dom'
+import logo from '../../Assets/logo-nobg.png'
+import cider from '../../Assets/roxburyrussetcider.png'
+import honey from '../../Assets/tilia.png'
+import { heroText, honeyText, ciderText } from '../../Data/Hometext'
 
-import { heroText, honeyText, ciderText } from '../../Data/Hometext';
-import logo from '../../Assets/logo-nobg.png';
-import cider from '../../Assets/roxburyrussetcider.png';
-import honey from '../../Assets/tilia.png';
-
-const transitionFramer = { duration: 1.2 };
+const transitionFramer = { duration: 1.2 }
 
 function ProductDescription({ img, title, btnText, text, target }) {
   return (
@@ -26,7 +24,7 @@ function ProductDescription({ img, title, btnText, text, target }) {
         {btnText}
       </Button>
     </Col>
-  );
+  )
 }
 
 ProductDescription.propTypes = {
@@ -35,14 +33,14 @@ ProductDescription.propTypes = {
   btnText: PropTypes.string,
   text: PropTypes.string,
   target: PropTypes.string,
-};
+}
 ProductDescription.defaultProps = {
   img: '',
   title: '',
   btnText: '',
   text: '',
   target: '',
-};
+}
 
 export default function Home() {
   return (
@@ -127,5 +125,5 @@ export default function Home() {
         <span />
       </motion.div>
     </Container>
-  );
+  )
 }

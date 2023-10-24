@@ -1,8 +1,7 @@
-import React from 'react';
-import Row from 'react-bootstrap/Row';
-import PropTypes from 'prop-types';
-
-import ItemCard from '../ItemCard/ItemCard';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Row from 'react-bootstrap/Row'
+import ItemCard from '../ItemCard'
 
 export default function ProductSection({ products }) {
   return (
@@ -15,10 +14,10 @@ export default function ProductSection({ products }) {
         />
       ))}
     </Row>
-  );
+  )
 }
 
 ProductSection.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types, react/require-default-props
   products: PropTypes.object,
-};
+}
