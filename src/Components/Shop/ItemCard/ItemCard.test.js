@@ -1,11 +1,21 @@
-import ItemCard from '.'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { ListGroupItem } from 'react-bootstrap'
-import { Provider } from 'react-redux' // Import Provider
+import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import ItemCard from '.'
 
 const mockStore = configureStore([])
 const store = mockStore({})
+
+const sampleProduct = {
+  name: 'Acacia honey - pure',
+  description:
+    'Experience the pure essence of Acacia honey, sourced from pristine forests, where each spoonful unveils a delicate and velvety sweetness that lingers on your tongue.',
+  size: '550g',
+  category: 'Honey',
+  image:
+    'https://files.stripe.com/links/MDB8YWNjdF8xTk5DcVhLVXRYZXNadlZifGZsX3Rlc3RfeDB0QVRqOEIyemo2U0txOEdyRkt2dW14005F7r1PWV',
+  price: 12,
+}
 
 let card
 
@@ -19,63 +29,56 @@ beforeEach(() => {
   card = document.querySelector('.product-card')
 })
 
-const sampleProduct = {
-  name: 'Acacia honey - pure',
-  description:
-    'Experience the pure essence of Acacia honey, sourced from pristine forests, where each spoonful unveils a delicate and velvety sweetness that lingers on your tongue.',
-  size: '550g',
-  category: 'Honey',
-  image:
-    'https://files.stripe.com/links/MDB8YWNjdF8xTk5DcVhLVXRYZXNadlZifGZsX3Rlc3RfeDB0QVRqOEIyemo2U0txOEdyRkt2dW14005F7r1PWV',
-  price: 12,
-}
+describe('render ItemCard and its elements', () => {
+  it('card buttons are rendered correctly', () => {
+    const incrementButton = screen.getByText('+')
+    const decrementButton = screen.getByText('-')
+    const addButton = screen.getByText('Add to cart')
 
-it('card buttons are rendered correctly', () => {
-  const incrementButton = screen.getByText('+')
-  const decrementButton = screen.getByText('-')
-  const addButton = screen.getByText('Add to cart')
+    const allButtons = [incrementButton, decrementButton, addButton]
 
-  const allButtons = [incrementButton, decrementButton, addButton]
+    allButtons.forEach((btn) => expect(card).toContainElement(btn))
+  })
 
-  allButtons.forEach((btn) => expect(card).toContainElement(btn))
+  it('elements containing correct product information are rendered', () => {
+    const cardImage = document.querySelector('img')
+    const cardTitle = screen.getByText(sampleProduct.name)
+    const cardDescription = screen.getByText(sampleProduct.name)
+    const cardPrice = screen.getByText(`Price: €${sampleProduct.price}`)
+
+    const textElements = [cardTitle, cardDescription, cardPrice]
+
+    textElements.forEach((el) => expect(card).toContainElement(el))
+    expect(cardImage.src).toContain(sampleProduct.image)
+  })
 })
 
-it('elements containing correct product information are rendered', () => {
-  const cardImage = document.querySelector('img')
-  const cardTitle = screen.getByText(sampleProduct.name)
-  const cardDescription = screen.getByText(sampleProduct.name)
-  const cardPrice = screen.getByText(`Price: €${sampleProduct.price}`)
+describe('Buttons on ItemCard work properly', () => {
+  it('increment and decrement buttons works', () => {
+    const incrementButton = screen.getByText('+')
+    const decrementButton = screen.getByText('-')
+    const productCount = document.querySelector('.item-number')
 
-  const textElements = [cardTitle, cardDescription, cardPrice]
+    fireEvent.click(incrementButton)
+    expect(productCount.textContent).toMatch('2')
 
-  textElements.forEach((el) => expect(card).toContainElement(el))
-  expect(cardImage.src).toContain(sampleProduct.image)
-})
+    fireEvent.click(decrementButton)
+    expect(productCount.textContent).toMatch('1')
 
-it('increment and decrement buttons works', () => {
-  const incrementButton = screen.getByText('+')
-  const decrementButton = screen.getByText('-')
-  const productCount = document.querySelector('.item-number')
+    //Do not increment less than 1
+    fireEvent.click(decrementButton)
+    expect(productCount.textContent).toMatch('1')
+  })
 
-  fireEvent.click(incrementButton)
-  expect(productCount.textContent).toMatch('2')
+  it('reset counter after adding product to cart', () => {
+    const addToCartButton = screen.getByText('Add to cart')
+    const incrementButton = screen.getByText('+')
+    const productCount = document.querySelector('.item-number')
 
-  fireEvent.click(decrementButton)
-  expect(productCount.textContent).toMatch('1')
+    fireEvent.click(incrementButton)
+    expect(productCount.textContent).toMatch('2')
 
-  //Do not increment less than 1
-  fireEvent.click(decrementButton)
-  expect(productCount.textContent).toMatch('1')
-})
-
-it('reset counter after adding product to cart', () => {
-  const addToCartButton = screen.getByText('Add to cart')
-  const incrementButton = screen.getByText('+')
-  const productCount = document.querySelector('.item-number')
-
-  fireEvent.click(incrementButton)
-  expect(productCount.textContent).toMatch('2')
-
-  fireEvent.click(addToCartButton)
-  expect(productCount.textContent).toMatch('1')
+    fireEvent.click(addToCartButton)
+    expect(productCount.textContent).toMatch('1')
+  })
 })
